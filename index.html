@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>Kira's general SugarCube tips</title>
+
+    <!-- Styles -->
+    <link href="assets/css/page.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" href="assets/img/favicon.png">
+  </head>
+
+  <body data-spy="scroll" data-target=".nav-sidebar" data-offset="100">
+
+    <!-- Header -->
+    <header class="header" style="background-color: #f1f6fa">
+      <div class="container">
+        <h1>Kira's general SugarCube tips</h1>
+        <p class="lead">hosted versions V1.kiwi</p>
+        <p>Welcome to my guide, given enough time and effort, this should turn into a great place to start any project. As is, it's probably that already, but i've still got plenty i plan to add and a lot of future revisions planned. This specifically is the hosted version, but you could probably surmise that if you clicked on the link.</p>
+ 
+        <p>Before we go over terminology and information and all that, I'd like this guide to be an entry point for any skill level, so I've got some stuff that some people won't need at the start. Skip to whatever you feel is appropriate to your skill level and return to earlier sections as needed. Even if you feel like you have a complete understanding of something, you may find a useful tip in fields you thought were long since bled dry, I know a lot and there's still a lot I don't know about even the simple macros, I can't imagine that's all that rare a position.</p>
+
+        <p>Find in page: <mark>CTRL+F</mark> or <mark>F3</mark></p>
+      </div>
+    </header><!-- /.header -->
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <div class="row">
+
+
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Sidebar
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          <div class="col-md-4 col-xl-3">
+            <aside class="sidebar sidebar-expand-md sidebar-sticky pr-md-4 br-1">
+              <div class="sidebar-body">
+                <ul class="nav nav-sidebar nav-sidebar-hero nav-sidebar-pill">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#baby-steps-header">Baby steps</a>
+                    <div class="nav">
+                      <a class="nav-link" href="#pre-baby-steps">Pre-baby steps</a>
+                      <a class="nav-link" href="#baby-steps">Baby steps</a>
+                      <a class="nav-link" href="#baby-steps2">Baby steps 2</a>
+                      <a class="nav-link" href="#baby-steps3">Baby steps 3</a>
+                    </div>
+                  </li>
+                  <!-- sep -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="#Glosary">Glosary</a>
+                    <div class="nav">
+                      <a class="nav-link" href="#glosary">glosary</a>
+                    </div>
+                  </li>
+                  <!-- sep -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="#chapter-0">Chapter 0 - Fundamentals</a>
+                    <div class="nav">
+                      <a class="nav-link" href="#fundamentals">Understanding the fundamentals</a>
+                      <a class="nav-link" href="#math-operations">Math operations</a>
+                      <a class="nav-link" href="#objects-and-arrays">Objects and arrays</a>
+                    </div>
+                  </li>
+                  <!-- sep --> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="#chapter-1">Chapter 1 - More commonly used macros</a>
+                    <div class="nav">
+                      <a class="nav-link" href="#clickables">Clickables</a>
+                      <a class="nav-link" href="#conditionals">Conditionals</a>
+                      <a class="nav-link" href="#loops">Loops</a>
+                      <a class="nav-link" href="#accessing-passages">Accessing Passages</a>
+                      <a class="nav-link" href="#inputs">Inputs</a>
+                      <a class="nav-link" href="#passage-features">Passage features</a>
+                    </div>
+                  </li>
+                  <!-- sep -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="#chapter-2">Chapter 2 - CSS, JS and HTML</a>
+                    <div class="nav">
+                      <a class="nav-link" href="#css-and-html">CSS and HTML</a>
+                    </div>
+                  </li>
+                  <!-- sep -->
+                </ul>
+              </div>
+            </aside>
+          </div>
+
+
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Baby Steps
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          <div class="col-md-7 col-xl-8 ml-md-auto py-8">
+            <h2 id="baby-steps-header">Baby steps</h2>
+              <p class="lead-2">Covering the basics of where to begin and what is what.</p>
+
+              <hr class="hr-dash my-7">
+
+              <h3 id="pre-baby-steps">Pre baby steps</h3>
+              <h4>What's twine for?</h4>
+                <p>Having some DNA from an earlier wiki type format, twine is first and foremost a downloadable program with an online hosted version that lets a player use a story format to create a story using a grid of tiles that the developer (you!) can organize to personal taste.</p>
+                
+                <p>Using the story format acts as a library that gives you access to the macros defined by the story format creator. This guide covers one story format, Sugarcube. To that end, most of the information provided only applies to Sugarcube, but as anyone whose learned a few programming languages know, there is a sometimes a common dialect, so you may still find information you find useful.</p>
+                
+                <h4>Why make interactive fiction over other formats?</h4>
+                
+                <p>Simplicity. There isn't an audio/graphics/gameplay balance to consider, only the basic stylings of the page and writing. You can optionally add much of it back in, with very few limitations beyond your own, but no one's going to expect them, so no one's going to demand them besides the most unreasonable out there.</p>
+
+                <p>I've seen everything from straight books to rpgs to open world sims, the limit is you, the individual, and your ability to learn the skills you wish to use. The Enemy with a capital E is burnout. Ease yourself into the workflow using smaller projects. You can make your Ideal, but you can't right now, probably. If you can cultivate yourself, you'll be suprised what you can make in the near future.
+                </p>
+                
+                <h4>What does sugarcube/twine do and how do I start?</h4>
+                
+                <p>Were you able to use twine without a story format, you'd pretty much just have the ability to write text and html aswell as use <code>[[links]]</code>. Adding any story format on top of that expands your selection to include the story format's library of macros. In the case of sugarcube, it's main charms are being friendly with javascript, having simple to use audio macros, preconfigured save system, and having simple to use powerful general use macros.</p>
+                
+                <p>While there's over a hundred to choose from, most of your problems are solvable using just 3, <code>&lt;&lt;link&gt;&gt;</code>, <code>&lt;&lt;if&gt;&gt;</code>, and <code>&lt;&lt;set&gt;&gt;</code>. <code>&lt;&lt;set&gt;&gt;</code> is able to save pieces of infromation for use later, mostly text and numbers, but also a few optional things we'll cover later. <code>&lt;&lt;if&gt;&gt;</code> and its child macros can be used to check those saved values against conditions to decide what content to show the end user, or run additional macros invisibly. It's not auto updating however, so refreshing the page is often necesary, but there's ways to avoid that that'll be covered later. Lastly, but easily the most used is <code>&lt;&lt;link&gt;&gt;</code>. It allows you to put a number of macros between <code>&lt;&lt;link&gt;&gt;</code> and <code>&lt;&lt;link&gt;&gt;</code>, those macros will be ran each time the link text is clicked. It is essentially the button that the player uses to tell the computer that they are done reading and would like more content, but even that's selling it short. Anything you've ever clicked on a website could be compared to a <code>&lt;&lt;link&gt;&gt;</code>.</p>
+                
+                <p>If I had to break down my stories by macro usage, 7 in 10 macros would be the basic macros and their child macros. Even with all the other macros I could be using, the fact is, if you can use them to solve an issue, you are likely solving it in a logical way. I've got to emphasize that last bit however, child macros. <code>&lt;&lt;link&gt;&gt;</code> is handy, but it's designed for a certain range of applications, variations like <code>&lt;&lt;linkreplace&gt;&gt;</code> and <code>&lt;&lt;button&gt;&gt;</code> fill in the niches between. &lt;&lt;if&gt;&gt; is great for ranges of values, alongside <code>&lt;&lt;elseif&gt;&gt;</code> and <code>&lt;&lt;else&gt;&gt;</code> it can handle almost any combination of conditions, but if you have a set of known values, you probably want it's sibling, <code>&lt;&lt;switch&gt;&gt;</code>. Like a fan with a dial going from 0 to 3, it deals in exacts.</p>
+
+                <p>The rest any given author uses are simply up to the nature of the project. In my case, I often use &lt;&lt;replace&gt;&gt; to allow links more control over the page, but in a project with music, &lt;&lt;audio&gt;&gt; macros would likely fill in the last third. You may not even need other macros though, and there's nothing wrong with that either. Even if a macro is recomended to you, do not feel obligated to use it, though if a party is sure that it fixes your issue, I recomend at least trying it. People by and large do not hand out advise out of malice.</p>
+
+              <hr class="hr-dash my-7">
+
+            <h3 id="baby-steps">Baby steps</h3>
+              <p>Now that we've covered all that, install the newest stable release of sugarcube into twine and lets look at what your first steps will look like.</p>
+  
+              <p>After turning on the dark theme and starting a new project, we are greeted with one passage, untitled passage. That's always generated for every new project.</p>
+
+              <p>Hovering over the 'untitled passage' passage will reveal a few icons; trash, edit, demo play, and ..., the first two explain themselves, but demo play is a bit more involved. In somewhat simplified terms, it allows you to see what parts of the screen were the result of a macro, and what the macro was. The ... lets you change the size of your passage, at the cost of really ruining your ability to evenly tile your passages. That menu also allows you to change the starting point of your story. Any exported html starts on the starting point you define in this way, the play button on the bottom right also starts from that passage.</p>
+              
+              <p>If you double click the passage you'll open the editing window, as well as some very memetic text, 'Double-click this passage to edit it.' . I recomend filling that with your heart and all its contents, then giving it a passage title that you'll be able to recognize and remember. Usually I name things with as few letters as would convey their utility, such as intro, but you can use whatever organizational method works for you. I also heavily recommend enabling snap to grid, It makes it much harder to layer passages on top of eachother. It also looks much fancier.</p>
+              
+              <p>Now that its got some text, make a [[link]]. After you do that, you can close the popup by clicking outside the editing box. An arrow should now be drawn from the current passage to the new passage, titled whatever you had put in the [[link]]. [[link]] is part of twines functionality, so it is special in the ability to create a passage without going through the motions. Unfortunately, those arrays are a performance concern for the program itself. Without a few hundred passages, you should however be fine.</p>
+              
+              <p>Opening that new passage, you'll once again see 'Double-click this passage to edit it.'. This time, let's make a &lt;&lt;link&gt;&gt;. copy this into your passage</p>
+              
+<pre class="language-markup line-numbers"><code>&lt;&lt;link 'passage transition, wow' passage1&gt;&gt;&lt;&lt;/link&gt;&gt;
+</code></pre>
+
+              <p>This is sugarcube code. Most macros look like similar to this, though not all have a &lt;&lt;/link&gt;&gt; style closing tag. Here I type the macro I'd like to use, link. After that, I provide the text that the reader will see. It's important that it has quotation marks so that the engine knows where to start and stop reading. After that, I provide a destination, passage1, but it's a bit different, isn't it? I said quotes are required, but here I used none.</p>
+
+              <p>That's input coersion. Sugarcube wants you to succeed, so it tries to help you in little ways. Here it sees a singular word, so it assumes it's intentional and uses it in the macro. Coersion can't work with multiple words however, so try not to depend on it.</p>
+
+              <p>Here I'd like you to rename passage1 to something else of your own choosing, I'd also like you to change the first bit of text to something else. After that, make a new passage and give it the name you used in your version of the code and fill it out a bit. Once you've done that, hit the play button and see what happens.</p>
+
+              <p>At this point, you should see the passage you wrote earlier, some of the default UI, and at the bottom, a link of your own creation. Click that and you should move to the next passage. If at this point you have an error on your screen, it means sugarcube wasn't expecting something that you gave it, but you probably wont receive an error, link is very agreeable. If it's red, that means you need to double check that it's second arguement is the exact same as the passage you created. Assuming you didn't receive an error, and the link is blue, click it. You should see the text from before.</p>
+              
+              <p>You at this point should notice that there's an arrow from the [[link]] passage to the linked passage, but not the &lt;&lt;link&gt;&gt; passage to the passage it links to. It's a bit of a simplification, but that's because twine handles [[]] and sugarcube handles &lt;&lt;&gt;&gt;. Both are useful, so use whichever you prefer, but I recomend getting used to the macro link. It's more functional and lacks the performance implications. Further, it looks much cleaner when setting multiple variables at once using it.</p>
+
+              <hr class="hr-dash my-7">
+
+            <h3 id="baby-steps2">Baby steps 2</h3>
+              <p>Link's an excellent tool, but it's best used in combination with other macros. Let's look at &lt;&lt;set&gt;&gt; as an example.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $integer to 5&gt;&gt;
+
+&lt;&lt;set $string to 'vista point'&gt;&gt;
+  
+&lt;&lt;set $boolean to true&gt;&gt;
+  
+&lt;&lt;set _tempvar to 4&gt;&gt;
+</code></pre>
+              
+              <p>While not everything you could use, this covers most things you should be using at the start. First we have a number and a string. An overwhelming majority of variables will be one of these two types. Even more esoteric things like objects and arrays mostly exist for the delivery of strings and numbers. Under that we've got a boolean, as simple as a binary bit. It's either true or false, no quotes. Lastly we have a temporary variable, that's just a variable you can only use until you load the next passage.</p>
+
+              <p>Looking back at the link from earlier, you should notice a similarity, the quotations. Behind sugarcube is twine and behind twine is javascript. Naturally, that means sugarcube inherits javascript's rules, and javascript states that numbers must not have quotes, and text must. Let's see what happens if i violate those rule a bit.</p>
+              
+              
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $notastring to this text&gt;&gt;
+-> unexpected token, 'text'
+  
+&lt;&lt;set $twostring to 'this' 'text'&gt;&gt;
+-> unexpected string
+  
+&lt;&lt;set $badstring to 'this text&gt;&gt;
+-> invalid or unexpected token
+</code></pre>
+              
+              <p>I've included a bonus error to show that in this case, the errors are slightly different. In the first case, it didnt coerce the second text, as it only needed the one string, so instead of tried to access a javascript variable that didnt exist. In the latter, it had an extra value that it didn't know how to handle, so it discarded the whole line of code. Lastly we have an unclosed string. javascript couldn't figure out where it ended, so it stopped thinking about it and discarded the code.</p>
+              
+              <p>While the finer details of that don't matter, it's important to be able to recognize errors. They are informative and can tell you exactly what went wrong if you know how to read them. I'll go into more detail later, but for now, just remember that the $var will be converted into whatever you saved to its name until you go out of your way to change the value. This can be within the context of a macro or just in plain text, as seen bellow.</p>
+              
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $var to 'passage'&gt;&gt;
+
+&lt;&lt;link 'navigation' $var&gt;&gt;&lt;&lt;/link&gt;&gt;
+</code></pre>
+              
+              <p>Of note, while i didn't include '' for $var, it does not mean it was string coerced. outside of one specific line of macros, it's always incorrect to use '$var'. It causes a nasty error that causes all your values to text correctly, but fail any actual logic. Let's look at that now.</p>
+              
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $var to 1&gt;&gt;
+$var -> 1
+&lt;&lt;set $var2 to '$var'&gt;&gt;
+$var2 -> 1
+&lt;&lt;set $var3 to $var2 * 2&gt;&gt;
+$var3 -> [number NaN]
+</code></pre>
+
+              <p>In this situation, my math failed because I thought I had a 1 saved to that variable, but instead I had a variable's notation saved. It's like sending your friend a desktop shortcut of a game instead of sending them the '.exe'.</p>
+
+
+              <hr class="hr-dash my-7">
+            
+            <h3 id="baby-steps3">Baby steps 3</h3>
+
+              <p>Now let's look at the last of the big 3 macros, &lt;&lt;if&gt;&gt;. &lt;&lt;set&gt;&gt; is great for keeping track of things, but &lt;&lt;if&gt;&gt; is why you keep track of things. For this, I'd like you to imagine a story in which you are asked weather you'd like to be a mage, a warrior or a rogue. Let's assume each is a link that sets $class to whatever you choose. How would you change the dialog of the first person you meet? Let's look at some examples.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $class to either('wizard', 'warrior', 'rouge')&gt;&gt;
+
+"Hello fair $class, I wish you luck on your journey"
+/*this works, but can we make it a bit more personal?*/
+  
+"hello fair $class, I hope your 
+&lt;&lt;if $class == 'wizard'&gt;&gt;
+  worldly insight\
+&lt;&lt;elseif $class == 'warrior'&gt;&gt;
+  unrivaled might\
+&lt;&lt;else&gt;&gt;
+  silver tongue\
+&lt;&lt;/if&gt;&gt; 
+brings you success in your adventures"
+/*every time you hit enter, thats a new line, you can use \ to cancel out those extra 'newlines' or 'linebreaks'*/
+</code></pre>
+
+              <p>While even I can admit that it's a bit ugly, and maybe even a bit excessive for this exact use case, It's still a matter of fact that it's a lot more personalized now. Even if it would be a bit more wasteful to have each conditition replace the entire scentence, it'd actually what I recomend. Visual clarity is very important in code. Let's see how that looks.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;if $class == 'wizard'&gt;&gt;
+  "Hello fellow $class, I hope your worldly insight serves you well in your journey."
+&lt;&lt;elseif $class == 'warrior'&gt;&gt;
+  "Hello fair $class, I pray your unrivaled might leads your enemies to ruin."
+&lt;&lt;else&gt;&gt;
+  "Hello my silver tongued $class, I hope for your safety that your every foe is single mother."
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>While it's handy swapping a few words, I am of the opinion that it's preferable to make the most of each macro usage. Speaking of, let's look at another link.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;link 'wizard' seminar&gt;&gt;
+  &lt;&lt;set $class to wizard&gt;&gt;
+  &lt;&lt;set $skill to magic&gt;&gt;
+  &lt;&lt;set _dice to random(1, 6)&gt;&gt;
+
+  &lt;&lt;if _dice gte 4&gt;&gt;
+    &lt;&lt;set $weakness to might&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;set $weakness to subterfuge&gt;&gt;
+  &lt;&lt;if&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+</code></pre>
+
+              <p>You may have been able to intuit, but the reason that there's a closing &lt;&lt;/link&gt;&gt; is so that you may fill it with macros. In this case I've saved a bunch of information all at once, but I've even taken the chance to roll a six sided die and assign a weakness for later in the theoretical story. You can do a lot in the span of one link. That's a bit of joke you'll get later.</p>
+
+              <p>With that, I think that I've covered everything you'd need to get your foot through the door. if you want to expand your understanding, You've got the rest of this guide to look forward to.</p>
+
+              <hr class="hr-dash my-7">
+          
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Glosary
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          
+          <h2 id="Glosary">Glosary</h2>
+            <p class="lead-2">Reference material.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="glosary">glosary</h3>
+
+              <p>I do NOT recomend reading this in it's entirety before moving on to the next section, this is a reference material you should come back to as needed.</p>
+
+              <p><strong>Value</strong> : A meaningful piece of data, can be numbers, words, Boolean, or even functions.</p>
+
+              <p><strong>Argument</strong> : Each value that a macro requires is an arguement. Providing too many arguements may cause an error.</p>
+
+              <p><strong>Expression </strong>: A combination of values and operators that has a result. Adding two numbers is an example of an expression.</p>
+
+              <p><strong>Setters </strong>: Anything that declares a new variable.</p>
+
+              <p><strong>On Pageload</strong>: Refers to running code as a page is loading. Attempting to edit html elements while they are still loading will cause errors.</p>
+
+              <p><strong>Event </strong>: Ised to refer to a moment of meaningful player interaction with the game. primarily click and onmouseover, but many others exist.</p>
+
+              <p><strong>Onmouseover / onmouseout</strong>: An event that triggers when the cursor enters or exits the area an element covers. Comparable to hover.</p>
+
+              <p><strong>Macro</strong>: a JavaScript function simplified for usage in SugarCube, the vast majority require an argument, and a healthy portion require a closing tag, which typically follows a pattern of &lt;&lt;macro&gt;&gt;, possibly an &lt;&lt;childmacro&gt;&gt; and a final closing &lt;&lt;/macro&gt;&gt;.</p>
+
+              <p><strong>Widget</strong>: a string of macros that have a shortened name that you yourself define. When called can accept any number of arguements including 0, after which it'll execute the macros inside. In the newest releases of sugarcube, the args array has had its syntax updated to _args[]. May now be defined to have a closing tag.</p>
+
+              <p><strong>Single quotes</strong>: ' ' apostrophes ' ', outside of prose, they can be used to contain strings.</p>
+
+              <p><strong>Double quotes</strong>: " " quotation marks " ", Functionally the same as single quotes, but you have to hold shift to type it.</p>
+
+              <p><strong>Backticks </strong>: ` ` backtics ` `, Located next to 1 on most keyboards, they are occasionally used to indicate to twine that you'd like something to be processed as an expression.</p>
+
+              <p><strong>@property </strong>: similar to backticks, placing @ before a CSS property will indicate to it that an expression needs to be parsed, allowing you to use variables in elements.</p>
+
+              <p><strong>Boolean </strong>: a true false value. Some macros require true false values, they will convert any non true false value into a truthy falsy value. 0, '', and undefined are falsy values and will be treated as false, most other things are truthy. This is not a comprehensive list of falsy values.</p>
+
+              <p><strong>Operators </strong>: All the ones talked about bellow will fall under one of three types,
+                <ul>
+                  <li>Math operators: + - * / % ** , the signs you use for Math</li>
+                  <li>Logical operators : || &&  ! , Or/And/Not respectively, used in conditionals. use parenthesis if you need to control the order.</li>
+                  <li>Comparison operators : > < != == === and all the derivatives therein. May also be refered to as conditonal operators.</li>
+                </ul></p>
+
+              <p><strong>DOM elements </strong>: html objects. they all have a type and they usually have at least one class, ID or other property.
+                <ul>
+                  <li>Class : a label applied to a DOM object to assign it traits, medium specificity, will overwrite the type but not the ID when it comes to stylings</li>
+                  <li>Id : a unique ID that only one element on the page can contain, if you'd like to see no errors, often used in macros to target a specific element. max specificity, will overwrite both class and type stylings</li>
+                  <li>Property : Instructions regarding how a dom element should look or operate. Inline CSS can be used to style single use elements, and functions can be used to give extra functionality to elements that is otherwise impractical to use on a sugarcube generated element.</li>
+                </ul></p>
+
+              <p><strong>CSS </strong>: Cascading Style Sheet, a special tab in the twine desktop app (tweego users have their own method) that you use to store your element stylings. The lower an item is on the list, the more priority it has, but that only exists to break ties. Otherwise it's always type > class > id. Priority can be inherited using modifiers that won't be explained here.</p>
+
+              <p><strong>Naked Variable Markup </strong>: $var , when you display a variable using its name. At times you'll need to have a variable right next to a dollar sign for example, that can make the variable illegible to sugarcube. In that case use &lt;&lt;print $var&gt;&gt; or &lt;&lt;= $var&gt;&gt;.
+              </p>
+
+              <p><strong>Square Bracket Link Markup </strong>: a way to make a link using [[cosmetic name|passage]], a core twine functionality not from SugarCube. SugarCube expands its functionality to include the ability to modify variables as seen in [[cosmetic name|passage][$var to 1]]. unlike link, these automatically create passages and draw lines which may affect performance on all machines given enough lines.</p>
+
+              <p><strong>Error </strong>: errors come in two varieties primarily, 'I didn't type that correctly' and 'I didn't think that entirely through' that is to say, syntax errors, which are relatively simple to fix most of the time, and logical errors, which are nightmarish to fix. Logical errors do not throw a red error message or a browser alert in most cases, that's because they are poor decisions more than they are legitimate errors. Flipping a > or adding a zero are logical errors.</p>
+
+              <p><strong>Syntax errors </strong>: seen in either browser alerts or red error boxes. They have descriptive error messages and usually will tell you have to fix them. Occasionally having an unclosed '' or "" will cause errors that are less informative. Always check that every quote is correctly closed before fixing anything else.</p>
+              
+              <p>A nonexhaustive list of common error examples include;</p>
+              <ul>
+                <li>Using just = in if statements</li>
+                <li>Using == in setters</li>
+                <li>Flipping &lt; and &gt; in conditionals</li>
+                <li>Doing set $object to $object2 instead of clone($object2)</li>
+                <li>Trying to modify a DOM element on page load</li>
+                <li>Closing a link to soon</li>
+                <li>Refactoring code incompletely</li>
+                <li>Using the same temp var in nested loops</li>
+                <li>Changing a passage name without updating links</li>
+                <li>Capitalizing a var in one location but not another</li>
+                <li>Using logic in story caption that you need completed by the time the main passage loads</li>
+                <li>Reloading a page without the understanding that every macro will get ran again</li>
+                <li>Calling an array without the square brackets</li>
+                <li>Creating an object with [] instead of {}</li>
+                <li>Not using &lt;&lt;capure&gt;&gt; in situations involving loops and variables</li>
+                <li>Forgetting to close a string</li>
+                <li>Forgetting to escape single or double quotes when inside a string contained in the same quote type</li>
+                <li>Forgetting backticks around expressions in macros that use multiple arguments</li>
+                <li>Changing a link into a linkreplace but forgetting the closing tag</li>
+              </ul></p>
+
+              <hr class="hr-dash my-7">
+
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Chapter 0
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          
+          <h2 id="chapter-0">Chapter 0 - Fundamentals</h2>
+            <p class="lead-2">Needed for the inner workings of a story.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="fundamentals">Understanding the fundamentals</h3>
+
+              <p>By and large, most things in life can be expressed as either a number or a word. The time? its 7. His name? John. That understanding is fundamental to most programming solutions. You take a larger idea of 'knowledge' and turn it into a number. Now that it's a number, let's say 100, it can be compared to other people, used as a chance of passing a text, or just a plain skill check. Though I covered the basics in baby steps, let's look at the set macro again.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $integer to 5&gt;&gt;
+
+&lt;&lt;set $string to 'vista point'&gt;&gt;
+  
+&lt;&lt;set $boolean to true&gt;&gt;
+  
+&lt;&lt;set $dice to random(1,6)&gt;&gt;
+</code></pre>
+
+              <p>As before, we've first got a variable storign a number. It's possible to use it in expressions to calculate other values. Let's look at that in action.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $math to $interger * 2&gt;&gt;
+$math - > 10
+
+&lt;&lt;set $math to $integer + $string&gt;&gt;
+$math - > 5vista point
+
+&lt;&lt;set $math to $integer + $boolean&gt;&gt;
+$math - > 6
+
+&lt;&lt;set $math to random(1, $integer)&gt;&gt;
+$math - > a whole number between 1 and $integer
+</code></pre>
+
+              <p>Let's look at some of these values a bit closer. Squaring went as expected. 5 squared is 25, simple as. Adding an array to the number placed it at the front of the array and stringified it. pretty logical. Adding a true to 5 resulted in six. Somewhat logical, a true is a 1 in binary. *don't add binaries to numbers, this is a demonstration*. Finally we have a simple function, it accepted the 5 as one of its parameters. None of it has any unpleasant variance. If you combine values, you get their sum. Let's do this again with strings.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $stringx to $string + ' at moon rock'&gt;&gt;
+$stringx - > vista point at moon rock
+
+&lt;&lt;set $stringx to $string * 2&gt;&gt;
+$stringx - > [number NaN]
+
+&lt;&lt;set $stringx to $string + $boolean&gt;&gt;
+$stringx - > vista pointtrue
+
+&lt;&lt;set $stringx to (1, $string)&gt;&gt;
+$stringx - > vista point
+</code></pre>
+
+              <p>Clearly strings are a little less able to handle extra ordinary circumstances. While you can add a number to the start or end of a string, letters that look like numbers are not numbers as far as the javascript is concerned, meaning '5' + 5 becomes '55'.</p>
+
+              <p>It's not unusual to add togeather strings to make a complete phrase, but be aware that picking information out of arrays can be tedius. While it's easy to imagine taking the 5 from '5ivsta point' and passing it through num() to 'repair' it. In practice, it's hard to identify exactly where the number is. With that in mind, it's better to create combined strings on the fly than it is to use them as a long term store of information.
+              </p>
+
+              <p>Now let's look a bit closer at the rules of strings.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $string to "los compadres"&gt;&gt;
+-> valid, user sees los compadres without " "
+
+&lt;&lt;set $string to ' "so i said to trust me" '&gt;&gt;
+-> valid, the inner "" are visible to end user
+
+&lt;&lt;set $string to 'ain't that just life?'&gt;&gt;
+-> invalid, 'ain' is valid, but everything past that errors, so its all discarded
+
+&lt;&lt;set $string to 'ain\'t that just life?'&gt;&gt;
+-> valid, \ tells javascript that you've got an exception and you'd like it to bend the rules
+</code></pre>
+
+              <p>When using "" inside strings, it's idea not to use them outside strings. The reverse is just as true. I favor '' over "" due to a writing style that favors quotations in links, but neither is 'correct'.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="math-operations">Math operations</h3>
+
+              <p>Naturally, with any numbers, you need the ability to do operations. A majority of the time you'll be doing addition and subtraction, but occasionally you'll need something exotic. let's rattle off a few operations.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $int to 5&gt;&gt;
+
+&lt;&lt;set $exponent to $int ** 2&gt;&gt;
+$exponent -> 25
+
+&lt;&lt;set $divison to $int / 2&gt;&gt; ->
+$division to 2.5
+
+&lt;&lt;set $remainder to $int % 2&gt;&gt;
+$remainder -> 1 (this performs division, but only keeps the remainder. in the case of 4 % 2 or 6 % 2, it would be zero)
+
+&lt;&lt;set $int++&gt;&gt;
+$int  - > 6 (add 1)
+
+&lt;&lt;set $int--&gt;&gt;
+$int - > 4 (substract 1)
+</code></pre>
+
+              <p>These mostly explain themselves, it's just the same math you've been using in school for years. What they don't teach you in school is javascript functions, so let's look at those next. Some sharper readers may have been able to intuit them from earlier instances, but let's talk about them regardless.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $random to either(1, 6)&gt;&gt;
+$random - > 1 or 6, nothing else
+
+&lt;&lt;set $random to random(1, 6)&gt;&gt;
+$random - > 1 through six, inclusive, all whole numbers
+
+&lt;&lt;set $random to Math.random(0, 1)&gt;&gt;
+$random - > 0 to 1, decimals included
+</code></pre>
+
+              <p>Here is your bag of dice. These handle randomness, and they handle it well. You can replace any number here with a variable that evaluates to a number. In the case of either, it even works with strings.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $high to Math.max(100, 1)&gt;&gt;
+$high - > 100
+
+&lt;&lt;set $low to Math.min(100, 1)&gt;&gt;
+$low - > 1
+</code></pre>
+
+              <p>Self explanatory, keep the highest or lowest. Good for healthbars that cannot exceed values and wallets that dont go negative. Finally, let's rapid fire some simple ones. Remember, always capitalize Math!</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $var to 1.5&gt;&gt;
+/*try to avoid saving decimals, they are floating points and have limited accuracy*/
+&lt;&lt;set $truncate to Math.trunc($var)&gt;&gt;
+$truncate -> 1, drops the decimal
+&lt;&lt;set $round to Math.round($var)&gt;&gt;
+$round -> 2, follows the rules of rounding
+&lt;&lt;set $ceiling to Math.ceil($var)&gt;&gt;
+$ceiling -> 2, rounds up, stops at zero
+&lt;&lt;set $floor to Math.floor($var)&gt;&gt;
+$floor -> 1, rounds down, stops at zero
+&lt;&lt;set $fixed to $var.toFixed(2)&gt;&gt;
+$fixed -> 1.50, for the significant digits minded individual, most commonly used in money
+</code></pre>
+
+              <p>You can also nest as many functions as you'd like. Often your equation will look similar to a pumpkin ((())), just remember that the one at the center is the first to be evaluated.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $var to Math.min(Math.trunc(Math.random(0, 10) * .5), 3)&gt;&gt;
+$var -> 3, 4 or 5
+</code></pre>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="objects-and-arrays">Objects and Arrays</h3>
+
+              <p>Objects and arrays are two sides of the same coin. They are two different ways of solving the issue of organized data. Let's look at two examples.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $array to ['johnny', 'cache']&gt;&gt;
+$array - > johnny, cache
+$array[0] - > johnny
+$array[1] - > cache
+$array.length - > 2
+  
+&lt;&lt;set $object to {
+  first : 'johnny',
+  second : 'cache' 
+}&gt;&gt;
+
+$object - > [object Object]
+$object.first - > johnny
+$object.second - > cache
+$object['first'] - > johnny
+$object['last'] - > cache
+</code></pre>
+
+              <p>That's a lot of information at once, so let's digest it a bit. Arrays use [] syntax, each entry has to be seperated by a comma, and each value has to be one of the datatypes we've talked about up to this point, which can include objects and arrays themselves. Arrays automatically number every entry from 0 to 1, in the order you provided.</p>
+
+              <p>Using $array[$key], you can access those saved values. The key can be any number up to the length of the array - 1. If you place an array inside an array, You will need to use a pair of $var[][]. Let's see that in action.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $array to [['johnny', 'cache'] , ['sabrina', 'bytes']]&gt;&gt;
+
+$array[0][0] - > johnny
+$array[0][1] - > cache
+$array[1][0] - > sabrina
+$array[1][1] - > bytes
+</code></pre>
+
+              <p>There's an order to it all, first javascript sees the outer array [x, y] with x and y representing the inner arrays, you access either the zeroith or the first using [0] or [1], then it looks at the value you picked and checks to see if it's an array, if it is, it'll see if you provided another [0] or [1], if you did, it'll fetch that value. Otherwise it'll return the entire array.</p>
+
+              <p>Pivoting back to objects, they instead have keys instead of indexs. While that sounds complicated, its the difference between a number and a word. Objects can also be nested. Let's see what that looks like.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $outer to { inner : {
+  first : 'johnny',
+  second : 'cache' 
+}}&gt;&gt;
+$outer - > [object object]
+$outer.inner - > [object object]
+$outer.inner.first - > johnny
+$outer.inner.second - > cache
+</code></pre>
+
+            <p>Like before, there's an order to everything. the first {} is outer; it's got one key, inner. Since inner was an object,  that means the process starts again. This time we have two keys, first and second. You can repeat the process till you finally reach a value, though you don't always want the values, sometimes the object itself is useful.</p>
+
+            <p>An example of when that's useful is when you are using functions. Let's look at some.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $array to [1, 2, 3, 4]&gt;&gt;
+$array - > 1, 2, 3, 4
+$array.length - > 4
+
+&lt;&lt;run $array.push(5)&gt;&gt;
+$array - > 1, 2, 3, 4, 5
+$array.length - > 5
+
+&lt;&lt;set $pluck to $array.pluck(1)&gt;&gt;
+$pluck will be one entry from $array, $array will no longer have that entry.
+
+&lt;&lt;set $index to $array.indexOf(4)&gt;&gt;
+$index - > 3
+$array[$index] - > 4
+
+&lt;&lt;set $array2 to $array.delete(1)&gt;&gt;
+$array2 - > 2, 3, 4 /*every 1 will be deleted*/
+
+&lt;&lt;set $array2 to $array.deleteAt(1)&gt;&gt; -> 1, 3, 4
+$array2 - > 1, 3, 4 /*2 was in index 1, due to being the second entry*/
+
+&lt;&lt;set $random to $array.random()&gt;&gt;
+$random - > one value from $array chosen at random
+
+&lt;&lt;if $array.includes(1)&gt;&gt;
+true if the value is found in the array &lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>That's a health set of tools for arrays, but what can an object do? The answer is, 'it depends'. Without a greater framework, objects aren't useful. Arrays are different in the fact that they are much more useful out of the box. Objects are ideal for situations involving complex frameworks wherein a variety of things have similar properties. An early stage programmer does not need to worry about objects.</p>
+
+              <p>Meanwhile, arrays lend themselves incredibly well to being the solution to a large variety of problems. Even without any advanced framework, contains() allows them to be inventories, pluck() let's them be dice that cannot roll a result twice, random() let's them be regular dice. While objects will very quickly superceed them in utility, at this moment, you should be able to use them to solve any number of problems out of the box.</p>
+
+              <p>As a final note, not every variable needs to last forever. you can use _ instead of $ in any of the examples above to create a temporary variable. Whenever the player clicks a link, every temporary variable is unset. Let's look at a few.</p>
+
+<pre class="language-markup line-numbers"><code> &lt;&lt;set _int to 1&gt;&gt;
+_int - > 1
+
+ &lt;&lt;set _string to 'vista point'&gt;&gt;
+_string - > vista point
+
+ &lt;&lt;set _array to [1, 1, 1, 6, 6, 6]&gt;&gt;
+_array - > 1, 1, 1, 6, 6, 6
+</code></pre>
+
+            <hr class="hr-dash my-7">
+          
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Chapter 1
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          
+          <h2 id="chapter-1">Chapter 1 - More commonly used macros</h2>
+            <p class="lead-2">Covering most of the commonly used macros that most stories in the wild utalize.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="clickables">Clickables</h3>
+
+              <p>While I covered this is some detail in baby steps, I'd like to hone in on link before any of the other macros.</p>
+
+              <p>Sugarcube as an engine is very event driven. While games like minecraft have a logic loop they constantly perform, calculating physics, ai, and other block updates on a cycle, in a vacuum, a sugarcube game will not do any constant function. It will perform instructions as you instruct it to, but it will not go out of its way to automatically do things without being programmed to follow that kind of behavior.</p>
+
+              <p>With that in mind, how do we instruct sugarcube to take an action? The non exhaustive list is macros and javascript. Every macro can be seen as a means of interacting with the engine, but the primary thing that a player would use to interact is the humble link. Let's look at two links, one simple, one slightly more verbose.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;link 'click me'&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link 'click me, again' 'passage'&gt;&gt;
+  &lt;&lt;set $var to 5&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+</code></pre>   
+
+            <p>The first link is clickable and nothing else. It has a name, but not a passage to navigate to, nor a variable to set. It's the minimum version of itself. Under it we have a link that both sets a variable and navigates to a passage. While humble, it's the backbone of many projects.</p>
+
+            <p>That's not all it can do however. Let's simulate a situation in which a few variables are used to make a more complete link.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $location to 'bus stop'&gt;&gt;
+
+&lt;&lt;link `'exit the ' + $location` &gt;&gt;
+&lt;&lt;/link&gt;&gt;
+</code></pre>     
+
+              <p>In this case, I've used an expression, combining a hardcoded string with one saved in memory. That's not however all i did. Those `` are backtics. They tell sugarcube that an expression is being used. Why would we need that? parsing. Link accepts 2 parameters and will discard the rest. The issue is string coersion. The + gets coerced into a '+' stringified plus sign. Remove the `` and you should find the link turns red and navigates you to a passage that says 'error: the passage "+" does not exist'.</p>
+
+              <p>That mostly covers the functions of links, so let's look at some of its decendants, starting with my favorite, linkreplace.</p>
+
+              <p>Something you may have noticed about link is it's inability to produce additional text without using a dedicated macro. Any raw text between its &lt;&lt;&gt;&gt; is simply discarded. Linkreplace instead replaces itself with that content, while also running all the macros contained. Needless to say, that renders it unclickable. Let's look at an example.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;linkreplace 'lootbox'&gt;&gt;
+  very underwhelming loot
+&lt;&lt;/linkreplace&gt;&gt;
+</code></pre>
+
+              <p>In this case, clicking lootbox will yield 'very underwhelming loot,' that removes the lootbox clickable element, so a player may not click again to try and receive multiples until the page is reloaded and the element resets. That makes linkreplace somewhat ideal for conversation options. It can convert itself to a responce, though you will need another macro to clear out additional options.</p>
+
+              <p>Taking maybe a step back instead of forward, let's talk about presentation. A link is good and all, but what about a button?</p>
+
+              <p>Well, in that case, you've got two options, button and clickable images, but to that end, I need to explain some things about how the twine client works. A file on your local desktop can be seen in your project, but only if a number of conditions are met. Namely, there are 3 different standards, embeds, absolute file paths, and relative file paths.</p>
+
+              <p>Relative flie paths are by and large, the thing you should be using in a release project. Assuming your game is in a folder named 'game', the images would go in either that same directory, or in another folder within the game folder. Let's lool at how that might look.</p>
+      
+<pre class="line-numbers language-markup"><code>/game
+  |-> project.html
+  |-> images
+      |-> bread.jpeg
+</code></pre>
+
+              <p>in this case, your relative file path would be url(images/bread.jpeg), in theory at least. In practice, your project isn't going to be in that folder during testing. Instead it'll be in some temporary folder in %appdata%, with that in mind, durring testing, you should probably use an absolute file path.</p>
+
+              <p>While I could be a bit more technical here, to get an absolute file path, drag the file onto your web browser. After the web browser opens the file, the url bar should be full of the absolute file path. Using that, the image will always work so long as that file exists on your computer and your web browser isn't some xenophobic privacy nightmare. There's a catch however, it works on your machine. Only your machine. Further, it reveals your user profile name if you share  that code with other parties, as well as your file structure, which may be information you consider private. With the understanding that this specific code only works on your machine and may consider private information, please avoid giving it to strangers or even friends.</p>
+
+              <p>Lastly we have embeds, server hosted files. Hotlinking files without permision should be avoided, though everyone who has ever said not to do it has probably done it once or twice for testing at at least one point in the past. That is to say, I cannot condemn you without being a hypocrit, but I can request you use it sparingly, and absolutely never use it in a release build. You will find your image stops working impresively fast.</p>
+
+              <p>With that all in mind, let's look at some examples.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;button 'clicky'&gt;&gt;
+  &lt;&lt;set $value to 'expression'&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;&lt;link '<img src="images/bread.jpeg">' bakery&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+
+&lt;&lt;link [img['images/bread.jpeg']]&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+</code></pre>
+
+              <p>The button has a rounded rectangle appearence by default, you can customize that to taste using css. The latter two are a two ways to insert the same image. They are just as capable as any other type of link, though you should consider how they might look on the page.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="conditionals">Conditionals</h3>
+
+              <p>While links handle a majority of the interactive functionality of sugarcube, often you'll want the interaction to be more of a two way street. While every link could lead to a distict passage, it's often more advisable to use an if statement to selectively display content. Let's look at a basic example right now.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $var to random(1,6)&gt;&gt;
+
+&lt;&lt;if $var > 3&gt;&gt;
+  4, 5, 6
+&lt;&lt;else&gt;&gt;
+  1, 2, 3
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>While you may not consider it peak game design, here we've got a coin flip. Random(1, 6) will yield one of six results, chosen completely randomly. Any that are above 3 will yield a true, while those that are under will yield a true. While a simple idea, this is a simplified version of how every game handles randomness. Sure most games have weighted randomness, seeds, and other dressing, rolling a die and flipping a coin are still at the core of a healthy majority of games on the market.</p>
+
+              <p>Let's look at this in terms of applications in sugarcube.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;link 'explore'&gt;&gt;
+  &lt;&lt;set _var to random(1, 3)&gt;&gt;
+
+  &lt;&lt;if _var == 1&gt;&gt;
+    &lt;&lt;goto 'beach'&gt;&gt;
+  &lt;&lt;elseif _var == 2&gt;&gt;
+    &lt;&lt;goto 'park'&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;goto 'mall'&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+</code></pre>
+
+              <p>This type of code is common as sand in a desert in my experience, and it's honestly perfectly fine conceptually. It's only true issue is being hardcoded, but that's a general issue of if statements in general. The sum total of their possibities is hardcoded. You cannot use a macro to add another condition to check against, you can only try to qualify for conditions that you setup before running the program. Another limitation is priority. Let's look at example of priority in action.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $var to 1&gt;&gt;
+&lt;&lt;if $var < 4&gt;&gt;
+  under 4
+&lt;&lt;elseif $var < 8&gt;&gt;
+  under 8
+&lt;&lt;elseif $var < 2&gt;&gt;
+  under 2
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>Given an infinite set of values, how many times do you think each statement would trigger? Think about that for a second before continuing.</p>
+
+              <p>With 3 conditions, it's clear that they are all possible in a vacuum. Whith $var is 1, they'd all read true, but what happens when they are all true? I think a reasonable person could make 3 guesses; Either nothing triggers, all trigger, or one triggers. All triggering sounds reasonable, but it's not the case. Nothing triggering is counter intuitive and a bit contrarian, needless to say, it's not the case either.</p>
+
+              <p>With those eliminated, we can determine that one triggers, which which one? It's a bit anticlimactic, but the first. The first true is the only one that matters. This also means that you can never trigger two conditions. As an example where this might matter, let's imagine you have a skill check that checks for the presence of skills that would prevent a trap from going off. Ideally, every skill you have in the thief school should reduce it's chance to go off by 33 percent. Let's look at what someone might code for that.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $chance to 100&gt;&gt;
+
+&lt;&lt;if $skills.includes('lockpicking')&gt;&gt;
+  &lt;&lt;set $chance to $chance - 33&gt;&gt;
+&lt;&lt;elseif $skills.includes('sneaking')&gt;&gt;
+  &lt;&lt;set $chance to $chance - 33&gt;&gt;
+&lt;&lt;elseif $skills.includes('pickpocketing')&gt;&gt;
+  &lt;&lt;set $chance to $chance - 33&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+&lt;&lt;if random(1, 100) <= $chance&gt;&gt;
+  &lt;&lt;goto 'sprung trap'&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>While not code that will produce an error, this actually isn't going to work as desired. Chance will only ever be decreased once. To fix that, individual if statements could be used. Alternatively, you could put yourself in a position to not have to manually check each possible outcome.</p>
+
+              <p>Say we've got an array for just thieving skills, we could simply count the number of skills in the array and use that in the conditional. Let's see how that looks.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $thieving to ['lockpicking', 'sneaking', 'pickpocketing']&gt;&gt;
+&lt;&lt;set $chance to $chance - ($thieving.length * 33)&gt;&gt;
+  
+&lt;&lt;if random(1, 100) =< $chance&gt;&gt;
+  &lt;&lt;goto 'actual trap'&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>While it's a bit ironic that the problem that uses less if statements is more elegant, it's important to remember that we've avoided tedium. A constant battle goes on between the functionality you'd like and the time/desire you have to impliment those ideas. Using mode code to solve problems does not make your solution better, it makes it longer.</p>
+
+              <p>While possibly not conditionals, let's take a look at a sibling macro of if, switch/case. While if statements are ideal for ranges, they are actually rather tedius when it comes to checking for hardcoded individual values. If you can believe it, that's where switch/case comes in. Let's see it in action.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $var to either(1, 'one', 11, 0)&gt;&gt;
+
+&lt;&lt;switch $var&gt;&gt;
+  &lt;&lt;case 1 11&gt;&gt;
+    one
+  &lt;&lt;case 'one'&gt;&gt;
+    the cooler one
+  &lt;&lt;default&gt;&gt;
+    not one?
+&lt;&lt;/switch&gt;&gt;
+</code></pre>
+
+              <p>Looking at this, you can probably intuite how it works. Whatever the input equals will be checked against the cases. If it matches one, that one triggers. While that sounds rather brief, that's primarily because it's that simple.</p>
+
+              <p>As a final note, remember that the page NEVER has an if statement on it. The engine writes the contents of the if statement to the page. The logic remains in the mystical back end. If you change a variable that affects the conditional, it will not reflect those changes until you reload the page. It's not unlike a recipe. The engine will cook whatever recipe you provide, but changing the recipe will not affect food it's already made.</p>
+
+              <p>You can however assume links ignore this rule. Links process a new version of the code they contain on every click, meaning they'll always reflect the current version of the state.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="loops">Loops</h3>
+
+            <p>Often you'll need to do recursive work, there's two main ways of doing that type of work, repeat and for. Repeat is simple, so let's look at it first.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $impatience to 0&gt;&gt;
+&lt;&lt;repeat 1s&gt;&gt;
+  &lt;&lt;set $impatience++&gt;&gt;
+&lt;&lt;/repeat&gt;&gt;
+</code></pre>
+
+              <p>It simply takes a valid unit of time, typically seconds, and runs the code after that period of time. It's got a sibling called timed that has the exact same syntax, but only runs once. It's got its uses, but in my opinion, there is no reason to rush someone's ability to read. Some people read slow and they should not be punished for it. Further, the repeat will continue indefinately, so consider the ramifications of how large and memory consuming the values you save could be. Even I have crashed my own chrome using repeat.</p>
+
+              <p>The other loop macro is for. It's not unlike repeat, but with a few pieces of dressing and a means of ending the loop. Let's look at its syntax along side an array, which is the overwhelming majority of its use cases.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $array to [1, 2, 3, 4, 5]&gt;&gt;
+
+&lt;&lt;for _v to 0; _v < $array.length; _v++&gt;&gt;
+  $array[_v] /*this will print the contents of the array in order, seperated by a line each*/
+&lt;&lt;/for&gt;&gt;
+</code></pre>
+
+              <p>While a bit indimidating at first, it's all very logical. There's a variable declaration, usually zero, a conditional, usually _v </>/= something, and then a math operation to do every loop, usually the incriment or decriment operation. While thats all very complicated, in short, in normal speak, you are just doing an if statement till it stops being true in a loop, and usually that if statement is as complicated as _x < $array.length.</p>
+
+              <p>Of note is the fact that execution seems to be halted while a loop is looping, so an infinite will lock up till sugarcube manually interupts it at arround a thousand cycles of nothing productive happening. Another consideration is to avoid calling loops within loops without considering the posibility of infinite recursion. I've in many cases refered a loop in itself and caused it to go completely infinate.</p>
+
+              <p>Next, let's talk about scope. In simple terms, variables cannot be accessed outside of their intended scope. Sugarcube story variables have an extremely wide scope normally, being accessable from javascript directly and other macros easily, though not necesarilly in the same way, but thats a thing for later. In this moment just note that the variable you define in the for macro is only scoped to the contents of the for macro.</p>
+
+              <p>Moving past that, lets look at a more complicated for loop.</p>
+      
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $spots to ['park', 'pier', 'beach']&gt;&gt;
+  
+&lt;&lt;for _v to 0; _v < $spots.length; _v++&gt;&gt;
+  &lt;&lt;link `'travel to ' + $spots[_v]` $spots[_v]&gt;&gt;&lt;&lt;/link&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+</code></pre>
+
+              <p>Looking at this, you may be thinking 'that looks fine', and to some extent, you'd be correct. It 'looks' perfect. The links will form perfectly, but thats because the string is parsed immediately, the second $spots[_v] is parsed on click. Given that the for look runs 3 times, ending on beach, you could come to the conclusion that the value of $spots[_v] at the end of execution is beach, and you'd be correct. Every link will send you to beach. Let's fix that.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $spots to ['park', 'pier', 'beach']&gt;&gt;
+
+&lt;&lt;for _v to 0; _v < $spots.length; _v++&gt;&gt;
+  &lt;&lt;capture $spots[_v]&gt;&gt;
+    &lt;&lt;link `'travel to ' + $spots[_v]` $spots[_v]&gt;&gt;&lt;&lt;/link&gt;&gt;
+  &lt;&lt;/capture&gt;&gt;
+&lt;&lt;/for&gt;&gt;
+</code></pre>
+
+              <p>Capture is now forcing $spots[_v] to be parsed immediately and passed to the link as a string. Many variables can be captured using commas to seperate each value. Capture is also not dependant on for, rather its a general use macro for any time you use variables that you'd like to fix to a certain value. Those situations are very sparse without for loops, but they do crop up.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="accessing-passages">Accessing Passages</h3>
+
+              <p>Consider this more of a warning than a tutorial, I've been using this macro without explaining it since chapter zero. It makes you 'go to' a passage based on a string input. as seen bellow.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;timed 10s&gt;&gt;
+  &lt;&lt;goto 'die'&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+</code></pre>
+
+              <p>The reason for this chapter is to caution against using it as the page is loading. Never use the macro just on the page itself. We have a macro for that, it's called include. Let's look at it.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;include 'extension'&gt;&gt;
+</code></pre>
+
+              <p>Assuming a passage named extension exists, this will parse it's text before rendering the rest of the page. This can also execute macros, making it rather versatile.</p>
+
+              <p>Often the reason you'd want to use goto on pageload is to highjack the current page and lead somewhere else, perhaps an event. Let's look at a way to not-do that.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;if $event == 5&gt;&gt;
+  &lt;&lt;include 'event5'&gt;&gt;
+&lt;&lt;else&gt;&gt;
+  the actual page text.
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>While a bit uglier, and a bit longer, it's arround 5 seconds faster for the end user. While you can crunch a few thousand numbers and go unnoticed, double navigation is extremely costly and noticable.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="inputs">Inputs</h3>
+
+              <p>So a quick advisory, if you allow user input, expect it to be abused. Any time text is put onto the screen using a macro or the wiki javascript function, it will be ran through a parser that will filter out and trigger any macro text passed through it, meaning players can use text input to cheat and worse, but any player knowledgable enough to do that can cheat in other ways, so dont bother stopping them, you can't. Beyond that, if i name your female love character interest Black Dynamite, you have to just accept it. Cheating and stupidity are up to the user, not you.</p>
+
+              <p>So most inputs follow a formula, they require the string version of a variable, that is to say '$name' instead of $name. From there, either they require a default, or they require a selection of values as options. Let's look at the former first.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $name to 'jonathan moestar'&gt;&gt;
+
+&lt;&lt;textbox "$name" $name&gt;&gt;
+</code></pre>
+
+              <p>This gives the player a simple textbox, not unlike the google search bar. While it can accept an extra parameter to be used as page navigation, I HEAVILY recomend against that. Mobile users often have trouble with getting it to register, so most developers don't use it ever, which has the effect of making the user's mostly unaware of its ability, even more seasoned ones. A final note before switching to the collection style inputs, the MOMENT that the value inside the textbox changes, the value is saved. there is no wait period, you do not need to manually save it.</p>
+
+              <p>These next two look a bit intimidating, but they are mostly two takes on the same idea, let's see them both first.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set _array to ['scandalous socks', 'unsightly hat', 'lascivious police baton']&gt;&gt;
+&lt;&lt;set $headslot to ''&gt;&gt;
+  
+&lt;&lt;listbox '$headslot' autoselect&gt;&gt;
+  &lt;&lt;optionsfrom _array&gt;&gt;
+  &lt;&lt;option "steamy, scalding hot towel" 'Ouch!'&gt;&gt;
+&lt;&lt;/listbox&gt;&gt;
+</code></pre>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;set $verse to 'rhythmic'&gt;&gt;
+
+&lt;&lt;radiobutton '$verse' 'no rhythm' autocheck&gt;&gt; no rhythm
+&lt;&lt;radiobutton '$verse' 'rhythmic' autocheck&gt;&gt; rythmic
+</code></pre>
+
+              <p>First we have listbox. Either you can provide several options, or it can automatically generate some options from an array. As with most, the second value is the one thats acted upon, and the first is simply cosmetic. Clicking a listbox opens a list of the values you've provided, the user can select one. I recomend against trying to print text based on that without a link. It's much harder and not dramatically more functional.</p>
+
+              <p>Under that we've got a pair of radio buttons. They've got some complicated behavior in theory, but in practice, you've almost certainly used them before, so they should be intuitive. Listboxes that are attatched to the same variable become mutually exclusive, allowing only one to be clicked, they offer no visual indiciation of the value stored within, so you must attach your own.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="passage-features">Passage features</h3>
+
+              <p>While most passage names are available, a few are reserved. This will server as a brief reference of the ones that matter. Note that all are case sensative.</p>
+
+              <p><strong>StoryDisplayTitle</strong>: This is the story's name, if provided. Otherwise it'll default to the project name.</p>
+
+              <p><strong>StorySubtitle</strong>: this controls the slightly smaller text that appears under your story's title. if unset, there will be no text.</p>
+
+              <p><strong>StoryCaption</strong>: This controls the space that spans from the StorySubtitle to the save button. You don't need to worry about how much space you use vertically, the save button will be pushed down under the content of StoryCaption regardless of length. This loads after the passage itself. Do not update variables here if you want them reflected on the main passage. Use store header for that.</p>
+
+              <p><strong>StoryInit</strong>: this loads invisibly before the story starts, specially its pre appended to the first passage that's loaded. though you can set a start point, that's a twine starting point, sugarcube handles storyinit and it'll be placed before whichever passage you start, debug or otherwise.</p>
+
+              <p><strong>StoryHeader</strong>: this loads its contents before the current passage.</p>
+
+              <p><strong>StoryFooter</strong>: this loads its contents after the current passagae, but before StoryCaption</p>
+
+              <p>There are others, but these are the ones that you'll use most often. Moving on, passages can also have tags. 3 exist, but I'd say two matter at this stage. the first is nobr, it removes the auto newline thats inserted when you hit enter. the second is widget. It makes the passage unloadable, instead its used to store widgets, which are sequences of code saved for later. Let's quickly look at a widget.</p>
+
+<pre class="language-markup line-numbers"><code>&lt;&lt;widget navigation&gt;&gt;
+  &lt;&lt;if $time > 3&gt;&gt;
+    &lt;&lt;link 'home' home&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+  &lt;&lt;else&gt;&gt;
+    &lt;&lt;link 'outside' outside&gt;&gt;
+    &lt;&lt;/link&gt;&gt;
+  &lt;&lt;/if&gt;&gt;
+&lt;&lt;/widget&gt;&gt;
+</code></pre>
+
+              <p>While not a very useful widget, this captures much of the essence of widgets. They are code you'll be rewriting often. By defining a widget, you can instantly call the entire block of code using just &lt;&lt;navigation&gt;&gt;, or whatever you supplied as the arguement to the widget macro.</p>
+
+              <p>This next part is new to the more recent major versions of sugarcube, _contents and the renamed _args array. Let's see how that looks.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;widget color container&gt;&gt;
+  &lt;&lt;set _inline to "color:" + _args[0] + ';'&gt;&gt;
+  <span @style=_inline>_contents</span>
+&lt;&lt;/widget&gt;&gt;
+
+&lt;&lt;color 'red'&gt;&gt;red text&lt;&lt;/color&gt;&gt;
+</code></pre>
+
+              <p>You may be able to intuit that _args[0] is what carries the value provided when i do &lt;&lt;color 'red'&gt;&gt;, but what about _contents? It's dynamically generated based on whatever you provided in between the closing and opening tags of the widget. It's still newish, so even I had trouble making an original demonstration, but it's a nice new feature and I look forward to finding new ways to use it.</p>
+
+              <p>I fully planning on skipping the third special passage tag, init, but you may look into it if you plan to import a javascript library. For everyne else, let's take a look at the un-special passage tags.</p>
+          
+<pre class="line-numbers language-markup"><code>&lt;&lt;if tags().includes("blue")&gt;&gt;
+  blue
+&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>tags() returns an immutable array that has every passage tag you've applied to the passage, primarilly its used with includes to check for the existance of a tag and handle it apropriately.</p>
+
+            <hr class="hr-dash my-7">
+
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Chapter 2
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          
+          <h2 id="chapter-2">Chapter 2 - CSS, JS and HTML</h2>
+            <p class="lead-2">The root of SugarCube and how to continue developing your story.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="css-and-html">CSS and HTML</h3>
+
+            <hr class="hr-dash my-7">
+          
+          <!-- End of chapters-->
+          </div>
+
+        </div>
+      </div>
+    </main><!-- /.main-content -->
+
+
+    <!-- Scripts -->
+    <script src="assets/js/page.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+  </body>
+
+</html>
