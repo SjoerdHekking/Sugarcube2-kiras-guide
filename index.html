@@ -1148,7 +1148,7 @@ variables().var = 5;
 
             <hr class="hr-dash my-7">
 
-            <h3 id="#js-and-js">JavaScript and JavaScript</h3>
+            <h3 id="js-and-js">JavaScript and JavaScript</h3>
 
               <p>That's most of the fundamentals, let's look at some specific functionality.</p>
 
@@ -1234,7 +1234,6 @@ background: red;
       for (let i = 0; i < preCode.length; i++) {
         let pattern = preCode[i].innerHTML;
         pattern = pattern.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        console.log(pattern);
         preCode[i].innerHTML = pattern;
       }
 
