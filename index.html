@@ -1230,6 +1230,14 @@ background: red;
     <script src="assets/js/script.js"></script>
 
     <script>
+      const preCode = document.querySelectorAll('code');
+      for (let i = 0; i < preCode.length; i++) {
+        let pattern = preCode[i].innerHTML;
+        pattern = pattern.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        console.log(pattern);
+        preCode[i].innerHTML = pattern;
+      }
+
       function toggleTheme() {
         const div = document.querySelector('pre');
         if (div.classList.contains('code-dark')) {
