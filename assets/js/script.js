@@ -38,33 +38,11 @@ $(function() {
           pre[i].className += " code-dark"; 
       }
     } else {
-      var pre = document.getElementsByTagName('pre'),
-          len = pre !== null ? pre.length : 0,
-          i = 0;
-      for(i; i < len; i++) {
-          pre[i].className -= " code-dark"; 
+      var elements = document.getElementsByClassName('code-dark');
+      while(elements.length > 0){
+          elements[0].classList.remove('code-dark');
       }
     }
   });
-
-  function toggleTheme() {
-    const div = document.querySelector('pre');
-    if (div.classList.contains('code-dark')) {
-      var pre = document.getElementsByTagName('pre'),
-          len = pre !== null ? pre.length : 0,
-          i = 0;
-      for(i; i < len; i++) {
-          pre[i].className -= " code-dark"; 
-      }
-    } else {
-      var pre = document.getElementsByTagName('pre'),
-          len = pre !== null ? pre.length : 0,
-          i = 0;
-      for(i; i < len; i++) {
-          pre[i].className += " code-dark"; 
-      }
-    }
-  }
-
 });
 
