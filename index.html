@@ -30,6 +30,8 @@
         <p>Before we go over terminology and information and all that, I'd like this guide to be an entry point for any skill level, so I've got some stuff that some people won't need at the start. Skip to whatever you feel is appropriate to your skill level and return to earlier sections as needed. Even if you feel like you have a complete understanding of something, you may find a useful tip in fields you thought were long since bled dry, I know a lot and there's still a lot I don't know about even the simple macros, I can't imagine that's all that rare a position.</p>
 
         <p>Find in page: <mark>CTRL+F</mark> or <mark>F3</mark></p>
+
+        <p><a href="https://github.com/SjoerdHekking/Sugarcube2-kiras-guide">Suggest edits or report issues here.</a></p>
       </div>
     </header><!-- /.header -->
 
@@ -93,6 +95,7 @@
                       <a class="nav-link" href="#css-and-html">CSS and HTML</a>
                       <a class="nav-link" href="#css-and-sugarcube">CSS and SugarCube</a>
                       <a class="nav-link" href="#js-and-sugarcube">JavaScript and SugarCube</a>
+                      <a class="nav-link" href="#js-and-js">JavaScript and JavaScript</a>
                     </div>
                   </li>
                   <!-- sep -->
@@ -1025,19 +1028,19 @@ body {
 
               <p>Of note, these macros cannot be used while the page is rendering. You can do things in that instant by putting them inside the done macro. That in mind, let's look at replace and append, perhaps the most useful of the whole lot.</p>
               
-<pre class="line-numbers language-markup"><code><<done>>
-  <<replace '.insertion'>>
-    <<include 'a big passage'>>
-  <</replace>>
-<</done>>
+<pre class="line-numbers language-markup"><code>&lt;&lt;done&gt;&gt;
+  &lt;&lt;replace '.insertion'&gt;&gt;
+    &lt;&lt;include 'a big passage'&gt;&gt;
+  &lt;&lt;/replace&gt;&gt;
+&lt;&lt;/done&gt;&gt;
 
 <span class='insertion' id='postamble'></span>
 
-<<linkreplace vanishing link>>
-  <<append '#postamble'>>
+&lt;&lt;linkreplace vanishing link&gt;&gt;
+  &lt;&lt;append '#postamble'&gt;&gt;
     <br><br>it's like a preamble but at the end.
-  <</append>>
-<</linkreplace>>
+  &lt;&lt;/append&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
 </code></pre>
 
               <p>Between these two examples, we've got most of the use cases narrowed down.  Let's start from the top.</p>
@@ -1052,13 +1055,13 @@ body {
 
 <pre class="line-numbers language-markup"><code><div id='demo' class='second'> inner-text </div>
 
-<<addclass '#demo' 'first'>>
+&lt;&lt;addclass '#demo' 'first'&gt;&gt;
 the item with id #demo gains first class
 
-<<removeclass '.dialog' 'second'>>
+&lt;&lt;removeclass '.dialog' 'second'&gt;&gt;
 all items with dialog class lose second class
 
-<<toggleclass '#header' 'dialog second'>>
+&lt;&lt;toggleclass '#header' 'dialog second'&gt;&gt;
 the item matching the id will have dialog and second either removed or applied, whichever they weren't before.
 </code></pre>
 
@@ -1093,7 +1096,7 @@ the item matching the id will have dialog and second either removed or applied, 
 }
 </code></pre>
 
-<pre class="line-numbers language-markup"><code><<= truetest($var)>>
+<pre class="line-numbers language-markup"><code>&lt;&lt;= truetest($var)&gt;&gt;
 /*return is what gets printed here, if nothing is, it'll be undefined*/
 </code></pre>
 
@@ -1102,15 +1105,15 @@ the item matching the id will have dialog and second either removed or applied, 
               <p>Combining all that, we can assume that just truetest would be incomplete, but truetest(5) would be a complete call, and that would be 90 percent true. If you exclude the (), it still finds the function, but it doesnt have the arguements to execute it, even if it isn't designed to take any, so it just returns the whole function, because the function is an object too. Let's compare these functions to another line of code.</p>
 
 <pre class="line-numbers language-js"><code>State.variables.var = 5;
-  variables().var = 5;
+variables().var = 5;
 </code></pre>
 
-              <p>These two lines are javascript syntax for <<set $var to 5>>. One uses the verbose method, the other uses the variables() method to shorten the call. That all settled, let's compare them to the code from before.</p>
+              <p>These two lines are javascript syntax for &lt;&lt;set $var to 5&gt;&gt;. One uses the verbose method, the other uses the variables() method to shorten the call. That all settled, let's compare them to the code from before.</p>
 
               <p>Something you should immediately notice is that they all use =, that's because they are all assignments. Given that, you can assume that on one side is the name and opposite that is a value. While a bit intimidating, function() {} is entirely swappable with 5. Let's look at a function in a variable.</p>
 
-<pre class="line-numbers language-markup"><code><<set $var to function() {console.log('konosuba')}>>
-<<run $var()>> -> works
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $var to function() {console.log('konosuba')}&gt;&gt;
+&lt;&lt;run $var()&gt;&gt; -> works
 </code></pre>
 
               <p>So I'll emphasize that you don't need to do this, this is stupid. it screams of bad save compatibility. What im trying to demonstrate is that there's no difference between a scary variable declaration and those sets that you've been using since page one.</p>
@@ -1132,7 +1135,7 @@ the item matching the id will have dialog and second either removed or applied, 
 }
 </code></pre>
 
-<pre class="line-numbers language-markup"><code><<= setup.clothes.swimsuit.type>>
+<pre class="line-numbers language-markup"><code>&lt;&lt;= setup.clothes.swimsuit.type&gt;&gt;
 </code></pre>
 
               <p>this is called a setup variable. This is information that isn't saved to the actual save, this comes with the html file itself. As you might be able to guess, if this is stored on the html file, you have limited influence over it. While you can change it in the moment, those changes are always reverted after a new page is rendered.</p>
@@ -1143,7 +1146,57 @@ the item matching the id will have dialog and second either removed or applied, 
 
             <hr class="hr-dash my-7">
 
-            <h3 id=""></h3>
+            <h3 id="#js-and-js">JavaScript and JavaScript</h3>
+
+              <p>That's most of the fundamentals, let's look at some specific functionality.</p>
+
+              <p>I mentioned earlier that there were 3 ways to interact with elements, javascript forms the third. Let's look at a more advanced verison of the code from earlier.</p>
+
+<pre class="line-numbers language-js"><code>window.mouseoverFunction = function(y) {
+  $(y).addClass('red')
+  }
+  window.mouseoutFunction = function(y) {
+  $(y).removeClass('red')
+}
+</code></pre>
+
+<pre class="line-numbers language-css"><code>/*these dont go in the same secton*/
+
+.red {
+background: red;
+}
+
+/*neither do these*/
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><div onmouseover="mouseoverFunction(this)" onmouseout="mouseoutFunction(this)"> hover here </div>
+</code></pre>
+
+              <p>Sugarcube stock does not have a macro that handles hover, so to do hover effects, you have to use javascript or css. In this case, we've got css.  One function triggers when the mouse enters the area of the element, the other when it leaves. While functional, it's clearly verbose for what it is. To that end, i recomend using CSS for this type of issue. Let's take a tangeant to look at that.</p>
+
+<pre class="line-numbers language-css"><code>.redh:hover {
+  background: red;
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><div class="redh"> hover here </div>
+</code></pre>
+
+              <p>Clearly, this is a superior solution. It's shorter in short long and medium term, so why know the other solution? The answer is vision. Let's use it for something css can't immitate.</p>
+
+<pre class="line-numbers language-js"><code>window.flipflopF = function(x) {
+  if (x.classList.length == 0) {
+    $(document.getElementById("right")).toggleClass('blue');
+    $(document.getElementById("left")).toggleClass('red');
+  }
+  
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><div id='left' onmouseover="flipflopF(this)"> hover here </div>
+
+<div id='right' class="blue" onmouseover="flipflopF(this)"> hover here </div>
+</code></pre>
 
             <hr class="hr-dash my-7">
 
