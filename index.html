@@ -91,6 +91,8 @@
                     <a class="nav-link" href="#chapter-2">Chapter 2 - CSS, JS and HTML</a>
                     <div class="nav">
                       <a class="nav-link" href="#css-and-html">CSS and HTML</a>
+                      <a class="nav-link" href="#css-and-sugarcube">CSS and SugarCube</a>
+                      <a class="nav-link" href="#js-and-sugarcube">JavaScript and SugarCube</a>
                     </div>
                   </li>
                   <!-- sep -->
@@ -970,6 +972,193 @@ _array - > 1, 1, 1, 6, 6, 6
             <hr class="hr-dash my-7">
 
             <h3 id="css-and-html">CSS and HTML</h3>
+
+              <p>You might have been able to intuit some info about the span earlier, but now's the time to take a deep dive into the basics of css and html elements. What i used earlier was a span, it had one property, the style property. Attatched to that property was @, which can be used to tell sugarcube that a variable is being provided. Without that, the element will read the variable markup instead of the contents of the variable. The style property was being used to assign another property, the color property, which just controls the text color.</p>
+
+              <p>While that sounds like a complicated mess, It's only complicated because I was doing on the fly css. You could give it a 4/10 complexity rating. Let's look at some more basic examples.</p>
+
+<pre class="line-numbers language-markup"><code><div id="heading"> text </div>
+
+<span class="dialog"> text </span>
+</code></pre>
+
+              <p>Here we have two of your most common elements. Div is a block element that occupies its entire line, while span is much closer to a highlighter since it just covers the affected text. The div has an ID, which is a unique identifier, while the span has a class, which is a catagory identifier. I can only have one of each ID, but i can have any number of class members.</p>
+
+              <p>That's fine and all, but if you tested the code above, you'd notice very quickly that they didnt do anything I didnt mention. That's intentional, while each element type has its own special features, the overwhelming majority are left for you to define. Let's look at some css defintions.</p>
+
+<pre class="line-numbers language-css"><code>#heading {
+  background: #ffffff17;
+  text-align: center;
+  border-radius: 25px;
+  padding: 0.3em;
+}
+
+.dialog {
+  color: violet;
+}
+
+body {
+  background: #14181a;
+  font: 14px sans-serif;
+  color : white;
+}
+</code></pre>
+
+              <p>That's a lot isnt it? There's a reason for that, these are fairly realistic looking. The heading has a slightly transparent background, center aligned text, rounded corners, and some padding. A sharp person could intuit a lot of that, except maybe the color. No one can really read color codes with much accuracy. It's not all obvious however. the only way to figure out what em is would be to be told. It's a percent of font size, in this case .3 of a font size. That makes it a scaling unit, compared to px which is hardcoded. Finally, the # is just the Id designator.</p>
+
+              <p>As for the dialog class, it's a bit minimal isn't it? Well, classes usually are simple. They aren't one highly customized element, they are a very broadly useful catagory. Where i making a project that required purple text, my purple text class would not be dramatically more complicated. I admit that it'd likely be called the speakers name or simply purple however.</p>
+
+              <p>That was class and ID, but what's body? body is an element. That is to say, it isn't a feature of an element, it's the actual element. span and div would also be valid identifiers. This applies to every element of that type. In the case of body, there's only one body, and due to inheritance, most elements on the page will inherit the features you define here, though not all, such as background.</p>
+
+              <p>About now, you may be wondering what happens if a conflict happens. The answer is suprisingly simple, specificity. The less of something that there is in theory, the more priority it gets, and if you have a tie on that level, the one lower on the list is the winner. Id is the most specific, following that is class, then lastly we have elements. While it seems counter intuitive that the one and only body has less specificity than the one and only heading, in practice, most elements aren't that unique. If you take the route of having colored text for every speaker, you'll find you have an army of spans in no time at all.
+              </p>
+
+              <p>Classes go in the css tab in twine, tweego users will have to cite the relavent documentation to figure that one out. The elements themselves go in the passage, not unlike macros.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="css-and-sugarcube">CSS and SugarCube</h3>
+
+              <p>Needless to say, some macros can interface with elements. Let's cover those now.</p>
+
+              <p>The two macro sets essentially control the two parts that go into an element. That is to say, one set controls classes, and the other controls the content. In other words, one set controls the apperance and the other controls the text.</p>
+
+              <p>Of note, these macros cannot be used while the page is rendering. You can do things in that instant by putting them inside the done macro. That in mind, let's look at replace and append, perhaps the most useful of the whole lot.</p>
+              
+<pre class="line-numbers language-markup"><code><<done>>
+  <<replace '.insertion'>>
+    <<include 'a big passage'>>
+  <</replace>>
+<</done>>
+
+<span class='insertion' id='postamble'></span>
+
+<<linkreplace vanishing link>>
+  <<append '#postamble'>>
+    <br><br>it's like a preamble but at the end.
+  <</append>>
+<</linkreplace>>
+</code></pre>
+
+              <p>Between these two examples, we've got most of the use cases narrowed down.  Let's start from the top.</p>
+
+              <p>If you remember what i said earlier durring the bit on include, any macro that produces text will process the text for additional macros, that means replace, which processes text, can be used to trigger macros such as include. I generally do this when I'd like to include a lot of text that I would prefer to keep out of the current passage.</p>
+
+              <p>Under that, we've got a linkreplace with append inside it. While this may seem a bit redundant, linkreplace is actually great for single use links. If its content is solely macros, it just disapears without a trace. In this case, i use that to prevent append from being abused and clicked multiple times.</p>
+
+              <p>A second note, while i demonstrated how to access classes with replace, namely the .class notation, it's a much better idea to use #id notation and ids. You may have multiple class members, making the macro reflect over a number of elements.</p>
+
+              <p>Moving onto the second set of element macros, we have the macros that control classes. Though there are a fair few macros that can do this, I'll narrow things down to just the ones I consider useful. Let's see them in practice.</p>
+
+<pre class="line-numbers language-markup"><code><div id='demo' class='second'> inner-text </div>
+
+<<addclass '#demo' 'first'>>
+the item with id #demo gains first class
+
+<<removeclass '.dialog' 'second'>>
+all items with dialog class lose second class
+
+<<toggleclass '#header' 'dialog second'>>
+the item matching the id will have dialog and second either removed or applied, whichever they weren't before.
+</code></pre>
+
+              <p>Mostly self explanatory. Don't use these on pageload without the done macro either.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id="js-and-sugarcube">JavaScript and SugarCube</h3>
+
+              <p>While this sounds like a sudden leap, let's look at some basic javascript before getting any impresions.</p>
+
+<pre class="line-numbers language-js"><code>window.mouseoverFunction = function() {
+  console.log('yata'); /*this is a debug command that just puts a message in the console seen via f12*/
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><div onmouseover="mouseoverFunction()"> hover here </div>
+</code></pre>
+
+              <p>Here's an extremely simple function. While i could try to explain things in fine detail, let's more look for patterns. Patterns are at the heart of everything.</p>
+
+              <p>mouseoverFunction is seen both in the top and bottom sections, while nothing else is shared between them. Given that, we can assume it's how the div knows what code to active. In the div it has a (), and while that has two matches in the top code, we can discount the console.log() line, as it's optional. That leaves us with the function() bit of code.</p>
+
+              <p>It should be a bit familiar, thinking back to earlier, I've been using random() and either() from the begining. Given that, we can assume that mouseoverFunction sets the name, but MouseoverFunction() is how it's called, and that assumption is indeed correct. Let's look at another function to see why that () is there.</p>
+
+<pre class="line-numbers language-js"><code>window.truetest = function(y) {
+  if (y) {
+    return true;
+  } else {
+    return false;
+  }
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><<= truetest($var)>>
+/*return is what gets printed here, if nothing is, it'll be undefined*/
+</code></pre>
+
+              <p>here's a simple bit of code that tells you if the value you provided evaluates to true or false. While I haven't shown the javascript version of an if statement, you should be able to see the similarities. Looking back at the function declaration, you see this one has a Y where the other had nothing. That's the arguement. Looking back at most macros, they overwhelmingly take at least one arguement.</p>
+
+              <p>Combining all that, we can assume that just truetest would be incomplete, but truetest(5) would be a complete call, and that would be 90 percent true. If you exclude the (), it still finds the function, but it doesnt have the arguements to execute it, even if it isn't designed to take any, so it just returns the whole function, because the function is an object too. Let's compare these functions to another line of code.</p>
+
+<pre class="line-numbers language-js"><code>State.variables.var = 5;
+  variables().var = 5;
+</code></pre>
+
+              <p>These two lines are javascript syntax for <<set $var to 5>>. One uses the verbose method, the other uses the variables() method to shorten the call. That all settled, let's compare them to the code from before.</p>
+
+              <p>Something you should immediately notice is that they all use =, that's because they are all assignments. Given that, you can assume that on one side is the name and opposite that is a value. While a bit intimidating, function() {} is entirely swappable with 5. Let's look at a function in a variable.</p>
+
+<pre class="line-numbers language-markup"><code><<set $var to function() {console.log('konosuba')}>>
+<<run $var()>> -> works
+</code></pre>
+
+              <p>So I'll emphasize that you don't need to do this, this is stupid. it screams of bad save compatibility. What im trying to demonstrate is that there's no difference between a scary variable declaration and those sets that you've been using since page one.</p>
+
+              <p>Of note however is that the window.name part is necesary for the code to work. that is your scope. Window scopes the variable that has the function to the entire browser tab, in simple terms at least.</p>
+
+              <p>This isn't a perfect comparison, you can declare functions in the javasccript and use them within sugarcube easily, you can't very easily save values to javascript and have them be usable in sugarcube *in the same way that you'd use a sugarcube variable.* Let's look at what I mean,</p>
+
+<pre class="line-numbers language-js"><code>setup.clothes = {
+  'red shirt' = {
+    price: 40,
+    type: 'costume'
+  }
+  'swimsuit' = {
+    price: 20,
+    type: 'underwear but socially acceptable'
+  }
+
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><<= setup.clothes.swimsuit.type>>
+</code></pre>
+
+              <p>this is called a setup variable. This is information that isn't saved to the actual save, this comes with the html file itself. As you might be able to guess, if this is stored on the html file, you have limited influence over it. While you can change it in the moment, those changes are always reverted after a new page is rendered.</p>
+
+              <p>While that sounds limiting, you already have variables that can be changed at will and reflect those changes. That in mind, what's the best use of setup? static data. If you dont plan to change values outside of major updates, they should probably be in setup. Looking back at that thing I mentioned earlier, I said the data is stored with the html. Each release would naturally include a new html. That means every new release, you can update the values and the changes will reflect immediately without relying on old saves. As a result, anything that depends primarilly on setup should be fairly resistant to breaking with old saves.</p>
+
+              <p>Expanding on that, setup is not the only thing that comes with the html, the functions do too, meaning much of what I said about seutp applies to functions aswell.</p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id=""></h3>
+
+            <hr class="hr-dash my-7">
+
+          <!--
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          | Chapter 3
+          |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+          !-->
+          
+          <h2 id="chapter-3">Chapter 3 - </h2>
+            <p class="lead-2"></p>
+
+            <hr class="hr-dash my-7">
+
+            <h3 id=""></h3>
 
             <hr class="hr-dash my-7">
           
