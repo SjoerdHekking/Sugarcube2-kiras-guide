@@ -34,6 +34,10 @@
         <p><a href="https://github.com/SjoerdHekking/Sugarcube2-kiras-guide">Suggest edits or report issues here.</a></p>
 
         <button onclick="toggleTheme()">Toggle theme</button>
+
+<pre class="line-numbers language-markup"><code><p>Hello World!</p>
+</code></pre>
+
       </div>
     </header><!-- /.header -->
 
@@ -1199,6 +1203,141 @@ background: red;
 
 <div id='right' class="blue" onmouseover="flipflopF(this)"> hover here </div>
 </code></pre>
+
+              <p>Here's something a bit more novel. I did a lot here, so let's explain it step by step. The function declaration was fairly typical, It's got one arguement, looking back at the mouseover functions, 'this.classList.length' is a bit esoteric looking, but in short, it's a shortcut for the getElement javascript. getElement is comparable to looking up any page number, while this is the page you are already on. Adding to that, classList will return an elements classes in an array. Combining all that, this passes the number of classes that the element in question has, in this case a 0 or a 1.</p>
+
+              <p>While I admit that the code itself is a bit pointless, I'll quickly spoil what it does. Mousing over the div with a colored background will remove the colored background and give it to the other element, permanently. The reason I want the number of classes is simply to check if it's the colored div. If the div has zero classes, it runs toggleClass on both elements, flipping them. As you might imagine, toggleClass in javascript is not fundamentally different from the sugarcube macro of similar naming.</p>
+
+              <p>Starting off, let's think of what that would take to do. The only thing I need to know is if the moused over element has the class already, needless to say, that's something we already have. Let's see what that version of the code would look like.</p>
+
+<pre class="language-js line-numbers"><code>window.keephighlighted = function(x) {
+  if (x == 0) {
+    $(document.getElementById("right2")).toggleClass('blue');
+    $(document.getElementById("left2")).toggleClass('red');
+  }
+
+}
+</code></pre>
+
+<pre class="language-markup line-numbers"><code><div id='left2' onmouseover="keephighlighted(this.classList.length)"> hover here </div>
+<div id='right2' class="blue" onmouseover="keephighlighted(this.classList.length)"> hover here </div>
+</code></pre>
+
+              <p>It really is as simple as that, reverse the conditional and you get new behaviors. Keep this in mind when debugging, unexpected behavior can start from the smallest of errors. > versus >= has been enough to completely ruin the usability of my very own code in the past. Let's do a bit better though, we've managed to get the color changed, but how would this interface with sugarcube?</p>
+
+              <p>To do that, we'd need a bit more certainty. Currently the code just checks if the element has a class, it can't actually tell which element is making the request. Also, it's a bit hardcoded, with the way it uses ids, it can only be used once in a page. Let's see how that can be solved.</p>
+
+<pre class="language-js line-numbers"><code>window.noclick = function(active, saveto, saveas) {
+
+  variables()[saveto] = saveas;
+  var contain = active.parentNode; 
+  /*remember,  active  is the  hover'd element and contain is box*/
+  active.classList.add('active');
+
+  if (contain.tagName == 'BOX') { 
+    /* tagName checks the elements type, it can also work for div and span*/
+    for (let i = 0; i < contain.children.length; i++) {
+      var deactivate = contain.children[i]; /*this make an array of all 3 spans*/
+      if (!(deactivate === active)){
+        deactivate.classList.remove('active');
+      }
+    }
+}
+
+$("#output").empty();
+$("#output").wiki('$color'); 
+/*just debug output so you can try the code on your own, also this is how to use javascript to write text to elements, but remember that this syntax and the above don't always work togeather, this is jquery markup*/
+}
+</code></pre>
+
+<pre class="line-numbers language-css"><code>.active {
+  background : #ff00002b;
+}
+.active:hover {
+  background : #ff00003d;
+}
+
+.fixedsize {
+  min-width: 10em;
+  display:inline-block;
+  text-align: center;
+  border: 1px solid #ff00003d;
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code><box>
+  <span class='fixedsize' onmouseover="noclick(this, 'color', 'green')">green</span>
+  <span class='fixedsize' onmouseover="noclick(this, 'color', 'blue')">blue</span>
+  <span class='fixedsize' onmouseover="noclick(this, 'color', 'red')">red</span>
+</box>
+  
+<span id='output'>$color</span>
+</code></pre>
+
+              <p>Oh wow, isn't that a complicated piece of code? this is generally the cost of expandable design, occasionally its longer, but at the same time, this actually interacts with the engine. I had the goal of making a button you only had to hover over, and yes i could have solved that extremely easily. Giving each it's own function, it would have been simple. Even just making it less pretty would have saved an hour. The main point of showing you this is to understand that you can make a problem much harder by nudging it in certain directions.</p>
+
+              <p>That in mind, let's look at what it does, step by step, as always.</p>
+
+              <p>Up to this point, the box element has not been mentioned once. Why is that? That's because I made it up. No where does it say that you have to use elements from a list. This is a custom element. I needed a custom element for two primary reasons. The first reason is that I needed all 3 to be in one element so i could use the parentNode command to get the parent. The second is, i wanted to be sure if there was a parent in the first place, parentNode would fetch the entire passage-passagename element had i made one button but no box. This allows it to operate as one button, a fanciful thing i didn't need to add that required more effort than it was worth.</p>
+
+              <p>Moving past that, let's look at variables()[saveto] = saveas. as we mentioned earlier, variables() is the '$' that goes before story variables in its true form, in as many ways as matters at least. the [] is the same [] we use in arrays, but it actually works for objects too. so  in this case, it's just variables().color = another variable;. Thats very digestible. Another goal was to make it work with any variable.</p>
+
+              <p>Moving on, we've got the parentNode code i mentioned before, this let me go from the inner spans to their parent, box. Afterwards I verify that it is indeed, a box element, then i get all it's children elements in an array using the children command, i looped through that just like you would any other array, using classList.remove to remove the active class from all elements but the one that === the element that triggered the function.</p>
+
+              <p>Now that it's all explained, barring the css which i think i'm not amazingly well equiped to explain in any useful detail, let's ask the question again, why does it look like that? Expandability. I wrote code designed to be used in multiple places. It can change any variable, it can be used any number of times on one page, none of it interfears with other css you could use. Lastly, it can handle any number of paired elements.</p>
+
+              <p>That's all well and good, but should you write code like this every time you have a problem? No. you'll never finish anything if every problem becomes a fancy Shiny Thing you have an obligation to reuse. The only time you should feel obligated to write code that iterates through arrays of any size without issue, that can handle a variety of situations without issue, that can be used in multiple different places to multiple effects, is when you actually will need it multiple times in the future.</p>
+
+              <p>The goal is always to finish your game, or at least version 1, dont get caught up on making fancy pretty code for every problem.</p>
+
+              <p>Moving forward, let's look at how to run javascript from a macro.</p>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;set $var to returnFunction()&gt;&gt;
+
+&lt;&lt;run $(body).wiki('&lt;&lt;set $money to 10000&gt;&gt;')&gt;&gt; 
+/*don't actually code like this please*/
+  
+&lt;&lt;link 'link'&gt;&gt;
+  &lt;&lt;script&gt;&gt;
+    var menu = document.getElementById("story-caption");
+      $(menu).empty();
+      $(menu).wiki("&lt;&lt;include 'StoryCaption'&gt;&gt;");
+  &lt;&lt;/script&gt;&gt;
+&lt;&lt;/link&gt;&gt;
+  
+&lt;&lt;script&gt;&gt;
+  Dialog.setup("Shopping list:");
+  Dialog.wiki("celery <br>celery <br>celery <br>celery <br>celery <br>celery <br>celery");
+  Dialog.open();
+&lt;&lt;/script&gt;&gt;
+</code></pre>
+
+              <p>Here's a bunch of different ways you can access javascript from the passage and macro level. Taking things from the top, just about any time you could be giving a 'value', you could be using a function with a return value. Let's quickly take an asside to check out one of those.</p>
+
+<pre class="line-numbers language-js"><code>window.range = function(y, x, z) {
+	if (y < z && y >= x) {
+	  return true;
+	}
+  return false;
+}
+</code></pre>
+
+<pre class="line-numbers language-markup"><code>&lt;&lt;if range($var, 1, 10)&gt;&gt;&lt;&lt;/if&gt;&gt;
+</code></pre>
+
+              <p>Here I've opted to use a function to create a true/false instead of a conditional. I recomend doing the same if you find yourself typing something all too often. Javascript should be used to save time, flashy vanity projects are secondary to not having to type the same mundane line of code a thousand times.</p>
+
+              <p>Moving on, we see run, it executes the line of code you give it. Ideal for running functions without returns. Following that, we have two uses of script. One in a link, one outside. Either is acceptable. The link on click updates the sidebar by clearing and reincluding it. Remember that wiki'd text executes any macros that are included. The script pops up a little window with the text provided, in this case, a normal shopping list. Ideally you'd want to use an include macro as the javascript does not allow itself to take multiple lines, hence the manual linebreaks.</p>
+
+              <p>About now is the time to mention all the quarks of javascript. Set and run can both accept $var arguements without issue, as any naked variable markup within a &lt;&lt;&gt;&gt; is converted unless it has already been stringified. Script cannot use that markup, you'll need to use the variables() markup or any equivilents. Another exceptin is seen in Dialog.setup(), in short, it isn't wiki'ing the text, so naked variable markup and macros wont work inside it.</p>
+
+              <p>Moving on from that, let's talk about methodology.</p>
+              
+              <p>I don't know the totality of javascript. That much should be painfully obvious to any of the wizards that may be fact checking this guide. That in mind, how do you find new javascript? Google.</p>
+
+              <p>By and large, if you can properly phrase your question, google will lead you to stack exchange, the read-only twine forum, developer.mozilla, w3schools, or any number of other information repositories. Just try to break down your question into it's parts. 'How to turn string into all lowercase letters', 'Find elements from parent div', 'apply change to all elements in array,' these types of questions have a very high chance of being answered in one search. Why is that?</p>
+
+              <p>It's because they clearly state both what you have and what you need to do. You won't get good results if you ask complex questions like 'how to program conversation' or 'making a time system'. Assume the minimum, be clear, start from the smallest parts. Needless to say, that helps when talking to other people as well. Make sure to include javascript in your google search too.</p>
 
             <hr class="hr-dash my-7">
 
