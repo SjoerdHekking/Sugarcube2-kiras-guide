@@ -1,0 +1,23 @@
+body.darkMode {
+    background-color: #030111;
+    color: #ffd6b9;
+}
+
+body.darkMode .nav-sidebar-pill .nav .nav-link , body.darkMode a.nav-link{
+    color: #ffd6b9;
+}
+
+body.darkMode h1, body.darkMode h2, body.darkMode h3, body.darkMode h4, body.darkMode h5, body.darkMode h6, body.darkMode .nav-sidebar-pill .nav .nav-link.active, body.darkMode .nav-sidebar .nav-item > .nav-link.active {
+    color: #50a1ff;
+}
+
+body.darkMode :not(pre) > code[class*="language-"], body.darkMode pre[class*="language-"].code-dark {
+    background: #050420;
+    border: 1px solid #ffd6b9;
+  }
+
+body.darkMode hr {
+    border-top-color: #ffd6b9;
+}
+
+/* Dubious color choices made by Maliface */
