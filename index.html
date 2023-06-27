@@ -12,6 +12,7 @@
     <!-- Styles -->
     <link href="assets/css/page.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/darkMode.css" rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -21,7 +22,7 @@
   <body data-spy="scroll" data-target=".nav-sidebar" data-offset="100">
 
     <!-- Header -->
-    <header class="header" style="background-color: #f1f6fa">
+    <header class="header">
       <div class="container">
         <h1>Kira's general SugarCube tips</h1>
         <p class="lead">hosted versions V1.kiwi</p>
@@ -33,7 +34,10 @@
 
         <p><a href="https://github.com/SjoerdHekking/Sugarcube2-kiras-guide">Suggest edits or report issues here.</a></p>
 
-        <button onclick="toggleTheme()">Toggle theme</button>
+        <!-- Dark mode button receives text on page init, doesn't start with any -->
+        <button id='dModeButton' onclick="toggleMode(true)"></button>
+        <button id='codeBoxTheme' onclick="toggleTheme()">Code box theme</button>
+        
 
 <pre class="line-numbers language-markup"><code><p>Hello World!</p>
 </code></pre>
@@ -68,10 +72,7 @@
                   </li>
                   <!-- sep -->
                   <li class="nav-item">
-                    <a class="nav-link" href="#Glosary">Glosary</a>
-                    <div class="nav">
-                      <a class="nav-link" href="#glosary">glosary</a>
-                    </div>
+                    <a class="nav-link" href="#Glossary">Glossary</a>
                   </li>
                   <!-- sep -->
                   <li class="nav-item">
@@ -141,9 +142,9 @@
                 
                 <p>While there's over a hundred to choose from, most of your problems are solvable using just 3, <code>&lt;&lt;link&gt;&gt;</code>, <code>&lt;&lt;if&gt;&gt;</code>, and <code>&lt;&lt;set&gt;&gt;</code>. <code>&lt;&lt;set&gt;&gt;</code> is able to save pieces of infromation for use later, mostly text and numbers, but also a few optional things we'll cover later. <code>&lt;&lt;if&gt;&gt;</code> and its child macros can be used to check those saved values against conditions to decide what content to show the end user, or run additional macros invisibly. It's not auto updating however, so refreshing the page is often necesary, but there's ways to avoid that that'll be covered later. Lastly, but easily the most used is <code>&lt;&lt;link&gt;&gt;</code>. It allows you to put a number of macros between <code>&lt;&lt;link&gt;&gt;</code> and <code>&lt;&lt;link&gt;&gt;</code>, those macros will be ran each time the link text is clicked. It is essentially the button that the player uses to tell the computer that they are done reading and would like more content, but even that's selling it short. Anything you've ever clicked on a website could be compared to a <code>&lt;&lt;link&gt;&gt;</code>.</p>
                 
-                <p>If I had to break down my stories by macro usage, 7 in 10 macros would be the basic macros and their child macros. Even with all the other macros I could be using, the fact is, if you can use them to solve an issue, you are likely solving it in a logical way. I've got to emphasize that last bit however, child macros. <code>&lt;&lt;link&gt;&gt;</code> is handy, but it's designed for a certain range of applications, variations like <code>&lt;&lt;linkreplace&gt;&gt;</code> and <code>&lt;&lt;button&gt;&gt;</code> fill in the niches between. &lt;&lt;if&gt;&gt; is great for ranges of values, alongside <code>&lt;&lt;elseif&gt;&gt;</code> and <code>&lt;&lt;else&gt;&gt;</code> it can handle almost any combination of conditions, but if you have a set of known values, you probably want it's sibling, <code>&lt;&lt;switch&gt;&gt;</code>. Like a fan with a dial going from 0 to 3, it deals in exacts.</p>
+                <p>If I had to break down my stories by macro usage, 7 in 10 macros would be the basic macros and their child macros. Even with all the other macros I could be using, the fact is, if you can use them to solve an issue, you are likely solving it in a logical way. I've got to emphasize that last bit however, child macros. <code>&lt;&lt;link&gt;&gt;</code> is handy, but it's designed for a certain range of applications, variations like <code>&lt;&lt;linkreplace&gt;&gt;</code> and <code>&lt;&lt;button&gt;&gt;</code> fill in the niches between. <code>&lt;&lt;if&gt;&gt;</code> is great for ranges of values, alongside <code>&lt;&lt;elseif&gt;&gt;</code> and <code>&lt;&lt;else&gt;&gt;</code> it can handle almost any combination of conditions, but if you have a set of known values, you probably want it's sibling, <code>&lt;&lt;switch&gt;&gt;</code>. Like a fan with a dial going from 0 to 3, it deals in exacts.</p>
 
-                <p>The rest any given author uses are simply up to the nature of the project. In my case, I often use &lt;&lt;replace&gt;&gt; to allow links more control over the page, but in a project with music, &lt;&lt;audio&gt;&gt; macros would likely fill in the last third. You may not even need other macros though, and there's nothing wrong with that either. Even if a macro is recomended to you, do not feel obligated to use it, though if a party is sure that it fixes your issue, I recomend at least trying it. People by and large do not hand out advise out of malice.</p>
+                <p>The rest any given author uses are simply up to the nature of the project. In my case, I often use <code>&lt;&lt;replace&gt;&gt;</code> to allow links more control over the page, but in a project with music, <code>&lt;&lt;audio&gt;&gt;</code> macros would likely fill in the last third. You may not even need other macros though, and there's nothing wrong with that either. Even if a macro is recomended to you, do not feel obligated to use it, though if a party is sure that it fixes your issue, I recomend at least trying it. People by and large do not hand out advise out of malice.</p>
 
               <hr class="hr-dash my-7">
 
@@ -154,11 +155,11 @@
 
               <p>Hovering over the 'untitled passage' passage will reveal a few icons; trash, edit, demo play, and ..., the first two explain themselves, but demo play is a bit more involved. In somewhat simplified terms, it allows you to see what parts of the screen were the result of a macro, and what the macro was. The ... lets you change the size of your passage, at the cost of really ruining your ability to evenly tile your passages. That menu also allows you to change the starting point of your story. Any exported html starts on the starting point you define in this way, the play button on the bottom right also starts from that passage.</p>
               
-              <p>If you double click the passage you'll open the editing window, as well as some very memetic text, 'Double-click this passage to edit it.' . I recomend filling that with your heart and all its contents, then giving it a passage title that you'll be able to recognize and remember. Usually I name things with as few letters as would convey their utility, such as intro, but you can use whatever organizational method works for you. I also heavily recommend enabling snap to grid, It makes it much harder to layer passages on top of eachother. It also looks much fancier.</p>
+              <p>If you double click the passage you'll open the editing window, as well as some very memetic text, <i>'Double-click this passage to edit it.'</i> . I recomend filling that with your heart and all its contents, then giving it a passage title that you'll be able to recognize and remember. Usually I name things with as few letters as would convey their utility, such as intro, but you can use whatever organizational method works for you. I also heavily recommend enabling snap to grid, It makes it much harder to layer passages on top of eachother. It also looks much fancier.</p>
               
-              <p>Now that its got some text, make a [[link]]. After you do that, you can close the popup by clicking outside the editing box. An arrow should now be drawn from the current passage to the new passage, titled whatever you had put in the [[link]]. [[link]] is part of twines functionality, so it is special in the ability to create a passage without going through the motions. Unfortunately, those arrays are a performance concern for the program itself. Without a few hundred passages, you should however be fine.</p>
+              <p>Now that its got some text, make a <code>[[link]]</code>. After you do that, you can close the popup by clicking outside the editing box. An arrow should now be drawn from the current passage to the new passage, titled whatever you had put in the <code>[[link]]</code>. <code>[[link]]</code> is part of twines functionality, so it is special in the ability to create a passage without going through the motions. Unfortunately, those arrays are a performance concern for the program itself. Without a few hundred passages, you should however be fine.</p>
               
-              <p>Opening that new passage, you'll once again see 'Double-click this passage to edit it.'. This time, let's make a &lt;&lt;link&gt;&gt;. copy this into your passage</p>
+              <p>Opening that new passage, you'll once again see <i>'Double-click this passage to edit it.'</i>. This time, let's make a <code>&lt;&lt;link&gt;&gt;</code>. copy this into your passage</p>
               
 <pre class="language-markup line-numbers"><code>&lt;&lt;link 'passage transition, wow' passage1&gt;&gt;&lt;&lt;/link&gt;&gt;
 </code></pre>
@@ -169,14 +170,14 @@
 
               <p>Here I'd like you to rename passage1 to something else of your own choosing, I'd also like you to change the first bit of text to something else. After that, make a new passage and give it the name you used in your version of the code and fill it out a bit. Once you've done that, hit the play button and see what happens.</p>
 
-              <p>At this point, you should see the passage you wrote earlier, some of the default UI, and at the bottom, a link of your own creation. Click that and you should move to the next passage. If at this point you have an error on your screen, it means sugarcube wasn't expecting something that you gave it, but you probably wont receive an error, link is very agreeable. If it's red, that means you need to double check that it's second arguement is the exact same as the passage you created. Assuming you didn't receive an error, and the link is blue, click it. You should see the text from before.</p>
+              <p>At this point, you should see the passage you wrote earlier, some of the default UI, and at the bottom, a link of your own creation. Click that and you should move to the next passage. If at this point you have an error on your screen, it means sugarcube wasn't expecting something that you gave it, but you probably wont receive an error, link is very agreeable. If it's red, that means you need to double check that it's second argument is the exact same as the passage you created. Assuming you didn't receive an error, and the link is blue, click it. You should see the text from before.</p>
               
-              <p>You at this point should notice that there's an arrow from the [[link]] passage to the linked passage, but not the &lt;&lt;link&gt;&gt; passage to the passage it links to. It's a bit of a simplification, but that's because twine handles [[]] and sugarcube handles &lt;&lt;&gt;&gt;. Both are useful, so use whichever you prefer, but I recomend getting used to the macro link. It's more functional and lacks the performance implications. Further, it looks much cleaner when setting multiple variables at once using it.</p>
+              <p>You at this point should notice that there's an arrow from the <code>[[link]]</code> passage to the linked passage, but not the <code>&lt;&lt;link&gt;&gt;</code> passage to the passage it links to. It's a bit of a simplification, but that's because twine handles <code>[[]]</code> and sugarcube handles <code>&lt;&lt;&gt;&gt;</code>. Both are useful, so use whichever you prefer, but I recomend getting used to the macro link. It's more functional and lacks the performance implications. Further, it looks much cleaner when setting multiple variables at once using it.</p>
 
               <hr class="hr-dash my-7">
 
             <h3 id="baby-steps2">Baby steps 2</h3>
-              <p>Link's an excellent tool, but it's best used in combination with other macros. Let's look at &lt;&lt;set&gt;&gt; as an example.</p>
+              <p>Link's an excellent tool, but it's best used in combination with other macros. Let's look at <code>&lt;&lt;set&gt;&gt;</code> as an example.</p>
 
 <pre class="language-markup line-numbers"><code>&lt;&lt;set $integer to 5&gt;&gt;
 
@@ -281,22 +282,20 @@ brings you success in your adventures"
           
           <!--
           |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
-          | Glosary
+          | Glossary
           |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
           !-->
           
-          <h2 id="Glosary">Glosary</h2>
+          <h2 id="Glossary">Glossary</h2>
             <p class="lead-2">Reference material.</p>
 
             <hr class="hr-dash my-7">
 
-            <h3 id="glosary">glosary</h3>
+              <p>I do NOT recomend reading this in its entirety before moving on to the next section, this is a reference material you should come back to as needed.</p>
 
-              <p>I do NOT recomend reading this in it's entirety before moving on to the next section, this is a reference material you should come back to as needed.</p>
+              <p><strong>Value</strong> : A meaningful piece of data, can be numbers, words, Booleans, or even functions.</p>
 
-              <p><strong>Value</strong> : A meaningful piece of data, can be numbers, words, Boolean, or even functions.</p>
-
-              <p><strong>Argument</strong> : Each value that a macro requires is an arguement. Providing too many arguements may cause an error.</p>
+              <p><strong>Argument</strong> : Each value that a macro requires is an argument. Providing too many arguments may cause an error.</p>
 
               <p><strong>Expression </strong>: A combination of values and operators that has a result. Adding two numbers is an example of an expression.</p>
 
@@ -310,7 +309,7 @@ brings you success in your adventures"
 
               <p><strong>Macro</strong>: a JavaScript function simplified for usage in SugarCube, the vast majority require an argument, and a healthy portion require a closing tag, which typically follows a pattern of &lt;&lt;macro&gt;&gt;, possibly an &lt;&lt;childmacro&gt;&gt; and a final closing &lt;&lt;/macro&gt;&gt;.</p>
 
-              <p><strong>Widget</strong>: a string of macros that have a shortened name that you yourself define. When called can accept any number of arguements including 0, after which it'll execute the macros inside. In the newest releases of sugarcube, the args array has had its syntax updated to _args[]. May now be defined to have a closing tag.</p>
+              <p><strong>Widget</strong>: a string of macros that have a shortened name that you yourself define. When called can accept any number of arguments including 0, after which it'll execute the macros inside. In the newest releases of sugarcube, the args array has had its syntax updated to _args[]. May now be defined to have a closing tag.</p>
 
               <p><strong>Single quotes</strong>: ' ' apostrophes ' ', outside of prose, they can be used to contain strings.</p>
 
@@ -341,7 +340,7 @@ brings you success in your adventures"
               <p><strong>Naked Variable Markup </strong>: $var , when you display a variable using its name. At times you'll need to have a variable right next to a dollar sign for example, that can make the variable illegible to sugarcube. In that case use &lt;&lt;print $var&gt;&gt; or &lt;&lt;= $var&gt;&gt;.
               </p>
 
-              <p><strong>Square Bracket Link Markup </strong>: a way to make a link using [[cosmetic name|passage]], a core twine functionality not from SugarCube. SugarCube expands its functionality to include the ability to modify variables as seen in [[cosmetic name|passage][$var to 1]]. unlike link, these automatically create passages and draw lines which may affect performance on all machines given enough lines.</p>
+              <p><strong>Square Bracket Link Markup </strong>: a way to make a link using <code>[[cosmetic name|passage]]</code>, a core twine functionality not from SugarCube. SugarCube expands its functionality to include the ability to modify variables as seen in <code>[[cosmetic name|passage][$var to 1]]</code>. unlike link, these automatically create passages and draw lines which may affect performance on all machines given enough lines.</p>
 
               <p><strong>Error </strong>: errors come in two varieties primarily, 'I didn't type that correctly' and 'I didn't think that entirely through' that is to say, syntax errors, which are relatively simple to fix most of the time, and logical errors, which are nightmarish to fix. Logical errors do not throw a red error message or a browser alert in most cases, that's because they are poor decisions more than they are legitimate errors. Flipping a > or adding a zero are logical errors.</p>
 
@@ -944,7 +943,7 @@ _array - > 1, 1, 1, 6, 6, 6
 &lt;&lt;/widget&gt;&gt;
 </code></pre>
 
-              <p>While not a very useful widget, this captures much of the essence of widgets. They are code you'll be rewriting often. By defining a widget, you can instantly call the entire block of code using just &lt;&lt;navigation&gt;&gt;, or whatever you supplied as the arguement to the widget macro.</p>
+              <p>While not a very useful widget, this captures much of the essence of widgets. They are code you'll be rewriting often. By defining a widget, you can instantly call the entire block of code using just &lt;&lt;navigation&gt;&gt;, or whatever you supplied as the argument to the widget macro.</p>
 
               <p>This next part is new to the more recent major versions of sugarcube, _contents and the renamed _args array. Let's see how that looks.</p>
 
@@ -1106,9 +1105,9 @@ the item matching the id will have dialog and second either removed or applied, 
 /*return is what gets printed here, if nothing is, it'll be undefined*/
 </code></pre>
 
-              <p>here's a simple bit of code that tells you if the value you provided evaluates to true or false. While I haven't shown the javascript version of an if statement, you should be able to see the similarities. Looking back at the function declaration, you see this one has a Y where the other had nothing. That's the arguement. Looking back at most macros, they overwhelmingly take at least one arguement.</p>
+              <p>here's a simple bit of code that tells you if the value you provided evaluates to true or false. While I haven't shown the javascript version of an if statement, you should be able to see the similarities. Looking back at the function declaration, you see this one has a Y where the other had nothing. That's the argument. Looking back at most macros, they overwhelmingly take at least one argument.</p>
 
-              <p>Combining all that, we can assume that just truetest would be incomplete, but truetest(5) would be a complete call, and that would be 90 percent true. If you exclude the (), it still finds the function, but it doesnt have the arguements to execute it, even if it isn't designed to take any, so it just returns the whole function, because the function is an object too. Let's compare these functions to another line of code.</p>
+              <p>Combining all that, we can assume that just truetest would be incomplete, but truetest(5) would be a complete call, and that would be 90 percent true. If you exclude the (), it still finds the function, but it doesnt have the arguments to execute it, even if it isn't designed to take any, so it just returns the whole function, because the function is an object too. Let's compare these functions to another line of code.</p>
 
 <pre class="line-numbers language-js"><code>State.variables.var = 5;
 variables().var = 5;
@@ -1160,8 +1159,8 @@ variables().var = 5;
 
 <pre class="line-numbers language-js"><code>window.mouseoverFunction = function(y) {
   $(y).addClass('red')
-  }
-  window.mouseoutFunction = function(y) {
+}
+window.mouseoutFunction = function(y) {
   $(y).removeClass('red')
 }
 </code></pre>
@@ -1204,7 +1203,7 @@ background: red;
 <div id='right' class="blue" onmouseover="flipflopF(this)"> hover here </div>
 </code></pre>
 
-              <p>Here's something a bit more novel. I did a lot here, so let's explain it step by step. The function declaration was fairly typical, It's got one arguement, looking back at the mouseover functions, 'this.classList.length' is a bit esoteric looking, but in short, it's a shortcut for the getElement javascript. getElement is comparable to looking up any page number, while this is the page you are already on. Adding to that, classList will return an elements classes in an array. Combining all that, this passes the number of classes that the element in question has, in this case a 0 or a 1.</p>
+              <p>Here's something a bit more novel. I did a lot here, so let's explain it step by step. The function declaration was fairly typical, It's got one argument, looking back at the mouseover functions, 'this.classList.length' is a bit esoteric looking, but in short, it's a shortcut for the getElement javascript. getElement is comparable to looking up any page number, while this is the page you are already on. Adding to that, classList will return an elements classes in an array. Combining all that, this passes the number of classes that the element in question has, in this case a 0 or a 1.</p>
 
               <p>While I admit that the code itself is a bit pointless, I'll quickly spoil what it does. Mousing over the div with a colored background will remove the colored background and give it to the other element, permanently. The reason I want the number of classes is simply to check if it's the colored div. If the div has zero classes, it runs toggleClass on both elements, flipping them. As you might imagine, toggleClass in javascript is not fundamentally different from the sugarcube macro of similar naming.</p>
 
@@ -1329,7 +1328,7 @@ $("#output").wiki('$color');
 
               <p>Moving on, we see run, it executes the line of code you give it. Ideal for running functions without returns. Following that, we have two uses of script. One in a link, one outside. Either is acceptable. The link on click updates the sidebar by clearing and reincluding it. Remember that wiki'd text executes any macros that are included. The script pops up a little window with the text provided, in this case, a normal shopping list. Ideally you'd want to use an include macro as the javascript does not allow itself to take multiple lines, hence the manual linebreaks.</p>
 
-              <p>About now is the time to mention all the quarks of javascript. Set and run can both accept $var arguements without issue, as any naked variable markup within a &lt;&lt;&gt;&gt; is converted unless it has already been stringified. Script cannot use that markup, you'll need to use the variables() markup or any equivilents. Another exceptin is seen in Dialog.setup(), in short, it isn't wiki'ing the text, so naked variable markup and macros wont work inside it.</p>
+              <p>About now is the time to mention all the quarks of javascript. Set and run can both accept $var arguments without issue, as any naked variable markup within a &lt;&lt;&gt;&gt; is converted unless it has already been stringified. Script cannot use that markup, you'll need to use the variables() markup or any equivilents. Another exceptin is seen in Dialog.setup(), in short, it isn't wiki'ing the text, so naked variable markup and macros wont work inside it.</p>
 
               <p>Moving on from that, let's talk about methodology.</p>
               

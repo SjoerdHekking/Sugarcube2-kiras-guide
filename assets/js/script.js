@@ -29,8 +29,11 @@ $(function() {
 
   });
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-    if (event.matches) {
+  /* Test for device dark mode */
+  window.darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  window.toggleCodeBoxes = (isDark) => {
+    if (isDark) {
       var pre = document.getElementsByTagName('pre'),
           len = pre !== null ? pre.length : 0,
           i = 0;
@@ -43,6 +46,19 @@ $(function() {
           elements[0].classList.remove('code-dark');
       }
     }
+  }
+  toggleCodeBoxes(darkMode);
+
+  window.toggleMode = (changer) => {
+    if (changer) {darkMode = !darkMode};
+    document.body.classList[darkMode ? 'add' : 'remove']('darkMode');
+    document.getElementById('dModeButton').innerText = darkMode ? 'Light mode' : 'Dark mode';
+  };
+  toggleMode();
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    toggleCodeBoxes(event.matches);
   });
+
 });
 
