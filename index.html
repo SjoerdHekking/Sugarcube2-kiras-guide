@@ -926,9 +926,9 @@ _array - > 1, 1, 1, 6, 6, 6
 
               <p><strong>StoryInit</strong>: this loads invisibly before the story starts, specially its pre appended to the first passage that's loaded. though you can set a start point, that's a twine starting point, sugarcube handles storyinit and it'll be placed before whichever passage you start, debug or otherwise.</p>
 
-              <p><strong>StoryHeader</strong>: this loads its contents before the current passage.</p>
+              <p><strong>PassageHeader</strong>: this loads its contents before the current passage.</p>
 
-              <p><strong>StoryFooter</strong>: this loads its contents after the current passagae, but before StoryCaption</p>
+              <p><strong>PassageFooter</strong>: this loads its contents after the current passagae, but before PassageCaption</p>
 
               <p>There are others, but these are the ones that you'll use most often. Moving on, passages can also have tags. 3 exist, but I'd say two matter at this stage. the first is nobr, it removes the auto newline thats inserted when you hit enter. the second is widget. It makes the passage unloadable, instead its used to store widgets, which are sequences of code saved for later. Let's quickly look at a widget.</p>
 
